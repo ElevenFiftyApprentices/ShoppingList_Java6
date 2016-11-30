@@ -1,11 +1,17 @@
 package org.elevenfifty.shopping.beans;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.elevenfifty.shopping.DateTimeOffset;
 
+
+
+@Entity
+@Table(name = "lists")
 public class ShoppingList {
 	//adding in variables per the TDD
 	@Id
@@ -19,7 +25,6 @@ public class ShoppingList {
 	private DateTimeOffset createdUtc;
 	private DateTimeOffset modifiedUtc;
 
-	//getters setters and hash coding and equals for variables
 	public int getId() {
 		return id;
 	}

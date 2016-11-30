@@ -1,12 +1,16 @@
 package org.elevenfifty.shopping.beans;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.elevenfifty.shopping.DateTimeOffset;
 import org.elevenfifty.shopping.Priority;
 
+@Entity
+@Table(name = "list items")
 public class ShoppingListItem {
 	//adding in variables per the TDD
 	@Id
