@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.springframework.org/schema/security">
+<head></head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top"
+		th:fragment="header">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".nav-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Shopping List</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#" th:href="@{/}">Home</a></li>
+					 <li class="active"><a href="#" th:href="@{/ShoppingList}">Shopping
+							List</a></li>
+					<!-- <li class="active"><a href="#" th:href="@{/order/list}">Orders</a></li>
+					<li class="active"><a href="#" th:href="@{/user/list}">Users</a></li>-->
+				</ul>
+				<!-- experimenting with conditionals in a html thymeleaf setting. will be able to use this with security purposes. -->
+				<!-- <ul class="nav navbar-nav navbar-right">
+					<li><a href="/login" th:if="${} ==  ">Login</a></li>
+					<li><p th:unless="${active} == true "></p></li>
+				</ul> -->
+				<ul class="nav navbar-nav navbar-right"
+					sec:authorize="isAuthenticated()">
+					<li><a href="#" onclick="$('#logoutForm').submit();">Logout</a></li>
+				</ul>
+				<form th:action="@{/logout}" method="post" style="display: none;"
+					id="logoutForm" sec:authorize="isAuthenticated()">
+					<input type="submit" value="Log Out" />
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
