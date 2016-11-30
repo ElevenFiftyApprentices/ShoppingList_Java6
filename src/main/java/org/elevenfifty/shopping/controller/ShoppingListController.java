@@ -22,6 +22,6 @@ public class ShoppingListController {
 	@GetMapping("/ShoppingList")
 	public String ShoppingList(Model model){
 		model.addAttribute("Shopping List", listRepo.findAll());
-		return "Shopping_List";
+		return "shopping_list";
 	}
 }
