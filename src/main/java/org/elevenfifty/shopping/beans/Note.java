@@ -1,11 +1,15 @@
 package org.elevenfifty.shopping.beans;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.elevenfifty.shopping.DateTimeOffset;
 
+@Entity
+@Table(name = "notes")
 public class Note {
 	//adding in variables per the TDD
 	@Id
