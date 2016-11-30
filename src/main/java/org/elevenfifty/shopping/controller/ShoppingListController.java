@@ -1,0 +1,20 @@
+package org.elevenfifty.shopping.controller;
+
+import org.elevenfifty.shopping.repository.ShoppingListRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class ShoppingListController {
+
+	@Autowired
+	private ShoppingListRepository listRepo;
+	
+	@GetMapping("/ShoppingList")
+	public String ShoppingList(Model model){
+		model.addAttribute("Shopping List", listRepo.findAll());
+		return "Shopping_List";
+	}
+}
