@@ -7,19 +7,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body layout:fragment="content">
-	<h1>user detail</h1>
+	<h1>Shopping List items</h1>
 
-	<img id="avatar" src="" th:if="${userImage}"
-		th:src="${userImage.htmlSrc}" alt="Profile Image"
-		title="Profile Image" />
-	<ul>
-		<li th:text="${user.id}"></li>
-		<li th:text="${user.firstName}"></li>
-		<li th:text="${user.lastName}"></li>
-		<li th:text="${user.email}"></li>
-		<li th:text="${user.PhoneNumber}"></li>
-		<li><a href="/" th:href="@{|/user/${user.id}/edit|}">Edit</a></li>
-	</ul>
+		<table>
+			<thead>
+				<tr>
+					<th>&nbsp;</th>
+					<th>Content</th>
+					<th>Options</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="shoppingListItem : ${list_items}">
+					<td th:text="${}"> <input type="checkbox" name="checked" th:value="${shoppingListItem.ischecked}"></td>
+					<td th:text="${shoppingListItem.contents}"></td>
+					<td><form method="POST" ><input type="hidden" name="listId" th:value="${}"/><button type="submit">Delete</button></form></td>
+				</tr>
+			</tbody>
+		</table>
 
 	<a href="/">Back</a>
 </body>

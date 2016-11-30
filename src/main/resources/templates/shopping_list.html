@@ -30,7 +30,7 @@ table, th, td {
 			<tbody>
 				<tr th:each="shoppinglist : ${lists}">
 					<td th:text="${shoppinglist.Name}"></td>
-					<td><a href="/" th:href="@{|/user/${user.id}/edit|}">Show</a></td>
+					<td><a href="/" th:href="@{|/shoppinglist/${shoppinglist.id}|}">Show</a></td>
 					<td><form method="POST" ><input type="hidden" name="listId" th:value="${shoppinglist.id}"/><button type="submit">Delete</button></form></td>
 				</tr>
 			</tbody>
