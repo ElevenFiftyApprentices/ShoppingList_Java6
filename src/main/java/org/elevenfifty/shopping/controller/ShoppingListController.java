@@ -41,7 +41,7 @@ public class ShoppingListController {
 //never forget to import the proper beans!
 		ShoppingList u = listRepo.findOne(id);
 
-		model.addAttribute("list", u);
+		model.addAttribute("lists", u);
 
 // yes I am going with listing the lists, I thought it would be funny. 
 		return "list_list";
@@ -104,3 +104,4 @@ public class ShoppingListController {
 //		}
 //	}
 }
+
