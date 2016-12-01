@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/basic">
+<head>
+<title>Shopping List</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body layout:fragment="content">
+
+	<h1>Shopping List</h1>
+	
+	<div class="checkbox">
+	  <label><input type="checkbox" value="">List Item 1</label>
+	</div>
+	<div class="checkbox">
+	  <label><input type="checkbox" value="">List Item 2</label>
+	</div>
+	<div class="checkbox disabled">
+	  <label><input type="checkbox" value="" disabled>List Item 3</label>
+</div>
+	
+</body>
+</html>
