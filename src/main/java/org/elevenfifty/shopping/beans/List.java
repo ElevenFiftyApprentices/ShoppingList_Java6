@@ -8,25 +8,24 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.elevenfifty.shopping.Priority;
+
+
 
 @Entity
-@Table(name = "list items")
-public class ShoppingListItem {
+@Table(name = "lists")
+public class List {
 	//adding in variables per the TDD
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	private int shoppingListId;
-	private String contents;
-	private boolean isChecked;
-	//created custom class to create a DateTimeOffset since it is a SQL only type of variable
+
+	private int userId;
+	private String name;
+	private String color;
+	//use Java.util.Date for this to mesh with SQL timestamp
 	private Date createdUtc;
 	private Date modifiedUtc;
-	//casting a series of enums as integers for a series of different outputs
-	private Priority priority;
 
-	//getters setters and hash coding and equals for variables
 	public int getId() {
 		return id;
 	}
@@ -35,32 +34,31 @@ public class ShoppingListItem {
 		this.id = id;
 	}
 
-	public int getShoppingListId() {
-		return shoppingListId;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setShoppingListId(int shoppingListId) {
-		this.shoppingListId = shoppingListId;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
-	public String getContents() {
-		return contents;
+	public String getName() {
+		return name;
 	}
 
-	public void setContents(String contents) {
-		this.contents = contents;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public boolean isChecked() {
-		return isChecked;
+	public String getColor() {
+		return color;
 	}
 
-	public void setChecked(boolean isChecked) {
-		this.isChecked = isChecked;
+	public void setColor(String color) {
+		this.color = color;
 	}
 
 	
-
 	public Date getCreatedUtc() {
 		return createdUtc;
 	}
@@ -77,25 +75,19 @@ public class ShoppingListItem {
 		this.modifiedUtc = modifiedUtc;
 	}
 
-	public Priority getPriority() {
-		return priority;
-	}
 
-	public void setPriority(Priority priority) {
-		this.priority = priority;
-	}
+	
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((contents == null) ? 0 : contents.hashCode());
+		result = prime * result + ((color == null) ? 0 : color.hashCode());
 		result = prime * result + ((createdUtc == null) ? 0 : createdUtc.hashCode());
 		result = prime * result + id;
-		result = prime * result + (isChecked ? 1231 : 1237);
 		result = prime * result + ((modifiedUtc == null) ? 0 : modifiedUtc.hashCode());
-		result = prime * result + ((priority == null) ? 0 : priority.hashCode());
-		result = prime * result + shoppingListId;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + userId;
 		return result;
 	}
 
@@ -107,11 +99,11 @@ public class ShoppingListItem {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ShoppingListItem other = (ShoppingListItem) obj;
-		if (contents == null) {
-			if (other.contents != null)
+		List other = (List) obj;
+		if (color == null) {
+			if (other.color != null)
 				return false;
-		} else if (!contents.equals(other.contents))
+		} else if (!color.equals(other.color))
 			return false;
 		if (createdUtc == null) {
 			if (other.createdUtc != null)
@@ -120,18 +112,20 @@ public class ShoppingListItem {
 			return false;
 		if (id != other.id)
 			return false;
-		if (isChecked != other.isChecked)
-			return false;
 		if (modifiedUtc == null) {
 			if (other.modifiedUtc != null)
 				return false;
 		} else if (!modifiedUtc.equals(other.modifiedUtc))
 			return false;
-		if (priority != other.priority)
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
 			return false;
-		if (shoppingListId != other.shoppingListId)
+		if (userId != other.userId)
 			return false;
 		return true;
 	}
 
 }
+
