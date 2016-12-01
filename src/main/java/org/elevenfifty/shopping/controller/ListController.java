@@ -39,9 +39,9 @@ public class ListController {
 	public String listitems(Model model, @PathVariable(name = "id") int id) {
 		model.addAttribute("id", id);
 		// never forget to import the proper beans!
-		ListItem u = listItemRepo.findOne(id);
+		//ListItem u = listItemRepo.findOne(id);
 		
-		model.addAttribute("list_items", u);
+		model.addAttribute("list_items", listItemRepo.findAll());
 		// yes I am going with listing the lists, I thought it would be funny.
 		return "list_list";
 	}

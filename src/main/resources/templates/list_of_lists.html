@@ -43,9 +43,9 @@ input[type=checkbox]:checked+label.strikethrough {
 						value="1" /> <label for="check" class="strikeThis"
 						th:text="${list.name}"> </label></td>
 					<!-- 	<td th:text="${list.name}"></td> -->
-					<td><a href="/" th:href="@{|/ListsofLists/${list.id}|}">Show</a></td>
+					<td><a href="/" th:href="@{|/ListsofLists/${id}|}">Show</a></td>
 					<td><form method="POST">
-							<input type="hidden" name="listId" th:value="${list.id}" />
+							<input type="hidden" name="listId" th:value="${id}" />
 							<button type="submit">Delete</button>
 						</form></td>
 				</tr>
