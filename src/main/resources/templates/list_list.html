@@ -2,44 +2,28 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layouts/basic">
-<link rel="stylesheet" th:href="@{/templates.css/main.css}" />
-
 <head>
-<title>Getting Started: Serving Web Content</title>
+<title>Shopping List Items</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<style>
-table, th, td {
-	border: 1px solid black;
-	border-collapse: collapse;
-	padding: 15px;
-}
-</style>
 </head>
 <body layout:fragment="content">
 	<h1>Shopping List items</h1>
-<!-- a simple button to add items.  -->
-		<a href="/" th:href="@{|/ListsofLists/add|}"><input type="button"
-			value="Add list" /></a>
-	<table>
-		<thead>
-			<tr>
-				<th>&nbsp;</th>
-				<th>Content</th>
-				<th>Options</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="listitem : ${list_items}">
-				<td>&nbsp;</td>
-				<td th:text="${listitem.contents}"></td>
-				<!-- button that deletes said item in table. check  listItemDelete method in Controller-->
-				<td><form method="POST">
-						<input type="hidden" name="id" th:value="${listitem.id}" />
-						<button type="submit">Delete</button>
-					</form></td>
-			</tr>
-		</tbody>
-	</table>
+
+		<table>
+			<thead>
+				<tr>
+					<th>&nbsp;</th>
+					<th>Content</th>
+					<th>Options</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="listItem : ${listItems}">
+					<td th:text="${listItem.contents}"></td>
+					<td><form method="POST" ><input type="hidden" name="listId" th:value="${}"/><button type="submit">Delete</button></form></td>
+				</tr>
+			</tbody>
+		</table>
 
 	<a href="/">Back</a>
 </body>

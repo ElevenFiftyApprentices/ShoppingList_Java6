@@ -7,5 +7,3 @@ insert into shoppinglist.list_items (list_id, contents, priority, is_checked, cr
 insert into shoppinglist.list_items (list_id, contents, priority, is_checked, created_utc, modified_utc) values (2, 'Hello there', 1, false, '2016-11-30 03:42:56', '2016-11-30 03:42:56');
 insert into shoppinglist.list_items (list_id, contents, priority, is_checked, created_utc, modified_utc) values (3, 'Hello there', 1, false, '2016-11-30 03:42:56', '2016-11-30 03:42:56');
 insert into shoppinglist.list_items (list_id, contents, priority, is_checked, created_utc, modified_utc) values (4, 'Hello there', 1, false, '2016-11-30 03:42:56', '2016-11-30 03:42:56');
-
-insert into shoppinglist.notes (item_id, body, created_utc, modified_utc) values ('1', 'this is where my paragraph would go', '2016-11-30 03:42:56', '2016-11-30 03:42:56');

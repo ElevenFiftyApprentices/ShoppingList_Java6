@@ -17,7 +17,7 @@ public class ListItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	private int ListId;
+	private int listId;
 	private String contents;
 	private boolean isChecked;
 	//created custom class to create a DateTimeOffset since it is a SQL only type of variable
@@ -35,6 +35,13 @@ public class ListItem {
 		this.id = id;
 	}
 
+	public int getListId() {
+		return listId;
+	}
+
+	public void setListId(int listId) {
+		this.listId = listId;
+	}
 
 	public String getContents() {
 		return contents;
@@ -82,22 +89,14 @@ public class ListItem {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ListId;
 		result = prime * result + ((contents == null) ? 0 : contents.hashCode());
 		result = prime * result + ((createdUtc == null) ? 0 : createdUtc.hashCode());
 		result = prime * result + id;
 		result = prime * result + (isChecked ? 1231 : 1237);
 		result = prime * result + ((modifiedUtc == null) ? 0 : modifiedUtc.hashCode());
 		result = prime * result + ((priority == null) ? 0 : priority.hashCode());
+		result = prime * result + listId;
 		return result;
-	}
-
-	public int getListId() {
-		return ListId;
-	}
-
-	public void setListId(int listId) {
-		ListId = listId;
 	}
 
 	@Override
@@ -109,8 +108,6 @@ public class ListItem {
 		if (getClass() != obj.getClass())
 			return false;
 		ListItem other = (ListItem) obj;
-		if (ListId != other.ListId)
-			return false;
 		if (contents == null) {
 			if (other.contents != null)
 				return false;
@@ -131,6 +128,8 @@ public class ListItem {
 		} else if (!modifiedUtc.equals(other.modifiedUtc))
 			return false;
 		if (priority != other.priority)
+			return false;
+		if (listId != other.listId)
 			return false;
 		return true;
 	}
