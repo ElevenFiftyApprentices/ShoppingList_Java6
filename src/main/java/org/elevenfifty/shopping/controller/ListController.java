@@ -33,6 +33,7 @@ public class ListController {
 	public String List(Model model) {
 		model.addAttribute("lists", listRepo.findAll());
 		return "list_of_lists";
+		
 	}
 
 	@GetMapping("/ListsofLists/{id}")
