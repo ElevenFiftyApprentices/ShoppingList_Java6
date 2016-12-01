@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ListController {
@@ -59,5 +60,11 @@ public class ListController {
 	public String listEditSave(@ModelAttribute @Valid List list, BindingResult result, Model model) {
 		listRepo.save(list);
 		return "redirect:/ListsofLists/" + list.getId();
+	}
+	@PostMapping("/ListsofLists/{id}")
+	public String listItemDelete( Model model, @RequestParam(name = "id") int id) {
+		
+		listItemRepo.delete(listItemRepo.findOne(id));
+		return "redirect:/ListsofLists/{id}" ;
 	}
 }
