@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.elevenfifty.shopping.beans.List;
+import org.elevenfifty.shopping.beans.ListItem;
+import org.elevenfifty.shopping.repository.ListItemRepository;
 import org.elevenfifty.shopping.repository.ListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,8 @@ public class ListController {
 
 	@Autowired
 	private ListRepository listRepo;
+	@Autowired
+	private ListItemRepository listItemRepo;
 
 	@GetMapping("")
 	public String index(Model model, HttpServletRequest request) {
@@ -32,13 +36,12 @@ public class ListController {
 	}
 
 	@GetMapping("/ListsofLists/{id}")
-	public String list(Model model, @PathVariable(name = "id") int id) {
+	public String listitems(Model model, @PathVariable(name = "id") int id) {
 		model.addAttribute("id", id);
 		// never forget to import the proper beans!
-		List u = listRepo.findOne(id);
-
-		model.addAttribute("lists", u);
-
+		ListItem u = listItemRepo.findOne(id);
+		
+		model.addAttribute("list_items", u);
 		// yes I am going with listing the lists, I thought it would be funny.
 		return "list_list";
 	}

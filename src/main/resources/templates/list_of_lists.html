@@ -22,42 +22,21 @@ table, th, td {
 		<table>
 			<thead>
 				<tr>
+					<th>&nbsp;</th>
 					<th>Name</th>
 					<th>&nbsp;</th>
 					<th>&nbsp;</th>
 				</tr>
 			</thead>
 			<tbody>
-<<<<<<< HEAD:src/main/resources/templates/shopping_list.html
-				<tr th:each="shoppinglist : ${lists}">
-				<td><input type="checkbox" name="name1" />&nbsp;</td>
-					<td th:text="${shoppinglist.name}"></td>
-					
-				<!-- 	<tr th:each="p : ${products}">
-				<td th:text="${p.upc}"></td>
-				<td th:text="${p.productName}"></td>
-				<td th:text="${p.productPrice}"></td>
-				<td th:text="${p.productManufacturer}"></td>
-				<td><a class="btn btn-primary" href="/" th:href="@{|/product/${p.id}}" role="button">View</a></td>
-				<td><a class="btn btn-success" href="/" th:href="@{|/product/${p.id}/edit|}" role="button">Edit</a></td>
-				<td><a class="btn btn-info" href="/" th:href="@{|/product/${p.id}/delete|}" role="button">Delete</a></td> -->
-					
-					
-					<td><a href="/" th:href="@{|/shoppinglist/${shoppinglist.id}|}">Show</a></td>
-					
-					
-					
-					<td><form method="POST" ><input type="hidden" name="listId" th:value="${shoppinglist.id}"/>
-					<button type="submit">Delete</button></form></td>
-=======
 				<tr th:each="list : ${lists}">
+					<td><input type="checkbox" name="name1" />&nbsp;</td>
 					<td th:text="${list.name}"></td>
 					<td><a href="/" th:href="@{|/ListsofLists/${list.id}|}">Show</a></td>
 					<td><form method="POST">
 							<input type="hidden" name="listId" th:value="${list.id}" />
 							<button type="submit">Delete</button>
 						</form></td>
->>>>>>> ed80097112da38fee6c779d9a957c85cf23cedb2:src/main/resources/templates/list_of_lists.html
 				</tr>
 			</tbody>
 		</table>

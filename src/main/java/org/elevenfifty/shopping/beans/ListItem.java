@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import org.elevenfifty.shopping.Priority;
 
 @Entity
-@Table(name = "list items")
+@Table(name = "list_items")
 public class ListItem {
 	//adding in variables per the TDD
 	@Id
