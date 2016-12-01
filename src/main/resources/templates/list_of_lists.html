@@ -17,8 +17,8 @@ table, th, td {
 	<div class="row">
 		<h1>Shopping Lists</h1>
 		<!-- a simple button for later to add shopping lists -->
-		<!--  <a href="/" th:href="@{|/user/add|}"><input type="button"
-			value="Add user" /></a>-->
+		<a href="/" th:href="@{|/ListsofLists/add|}"><input type="button"
+			value="Add list" /></a>
 		<table>
 			<thead>
 				<tr>
@@ -28,10 +28,13 @@ table, th, td {
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="shoppinglist : ${lists}">
-					<td th:text="${shoppinglist.Name}"></td>
-					<td><a href="/" th:href="@{|/shoppinglist/${shoppinglist.id}|}">Show</a></td>
-					<td><form method="POST" ><input type="hidden" name="listId" th:value="${shoppinglist.id}"/><button type="submit">Delete</button></form></td>
+				<tr th:each="list : ${lists}">
+					<td th:text="${list.name}"></td>
+					<td><a href="/" th:href="@{|/ListsofLists/${list.id}|}">Show</a></td>
+					<td><form method="POST">
+							<input type="hidden" name="listId" th:value="${list.id}" />
+							<button type="submit">Delete</button>
+						</form></td>
 				</tr>
 			</tbody>
 		</table>

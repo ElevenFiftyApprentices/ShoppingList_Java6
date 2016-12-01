@@ -12,7 +12,7 @@ import org.elevenfifty.shopping.Priority;
 
 @Entity
 @Table(name = "list items")
-public class ShoppingListItem {
+public class ListItem {
 	//adding in variables per the TDD
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -107,7 +107,7 @@ public class ShoppingListItem {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ShoppingListItem other = (ShoppingListItem) obj;
+		ListItem other = (ListItem) obj;
 		if (contents == null) {
 			if (other.contents != null)
 				return false;

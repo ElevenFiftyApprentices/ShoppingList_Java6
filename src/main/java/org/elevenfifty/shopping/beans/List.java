@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "lists")
-public class ShoppingList {
+public class List {
 	//adding in variables per the TDD
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,7 +22,7 @@ public class ShoppingList {
 	private int userId;
 	private String name;
 	private String color;
-	//created custom class to create a DateTimeOffset since it is a SQL only type of variable
+	//use Java.util.Date for this to mesh with SQL timestamp
 	private Date createdUtc;
 	private Date modifiedUtc;
 
@@ -99,7 +99,7 @@ public class ShoppingList {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ShoppingList other = (ShoppingList) obj;
+		List other = (List) obj;
 		if (color == null) {
 			if (other.color != null)
 				return false;
