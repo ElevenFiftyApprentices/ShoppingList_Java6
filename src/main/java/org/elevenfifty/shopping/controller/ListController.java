@@ -48,18 +48,18 @@ public class ListController {
 	}
 
 	// GetMapping and PostMapping for editing items in lists.
-	@GetMapping("/ListsofLists/{id}/edit")
-	public String listEdit(Model model, @PathVariable(name = "id") int id) {
+	@GetMapping("/ListsofLists/{id}/add")
+	public String listItemAdd(Model model, @PathVariable(name = "id") int id) {
 		model.addAttribute("id", id);
-		List u = listRepo.findOne(id);
-		model.addAttribute("lists", u);
-		return "list_edit";
+		ListItem u = listItemRepo.findOne(id);
+		model.addAttribute("list_items", u);
+		return "list_item_add";
 	}
 
 	@PostMapping("/ListsofLists/{userId}/edit")
-	public String listEditSave(@ModelAttribute @Valid List list, BindingResult result, Model model) {
-		listRepo.save(list);
-		return "redirect:/ListsofLists/" + list.getId();
+	public String listEditSave(@ModelAttribute @Valid ListItem listItem, BindingResult result, Model model) {
+		listItemRepo.save(listItem);
+		return "redirect:/ListsofLists/{id}";
 	}
 	@PostMapping("/ListsofLists/{id}")
 	public String listItemDelete( Model model, @RequestParam(name = "id") int id) {
