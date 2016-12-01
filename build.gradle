@@ -10,7 +10,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'spring-boot'
 jar {
-    baseName = 'java301'
+    baseName = 'shoppinglist_java6'
     version =  '0.1.0'
 }
 eclipse {

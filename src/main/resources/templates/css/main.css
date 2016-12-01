@@ -1,0 +1,4 @@
+/* Strikethrough when the checkbox is selected */
+input[type=checkbox]:checked + label.strikethrough{
+  text-decoration: line-through;
+}

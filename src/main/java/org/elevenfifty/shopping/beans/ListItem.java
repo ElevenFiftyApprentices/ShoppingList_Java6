@@ -8,20 +8,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.elevenfifty.shopping.Priority;
 
 @Entity
-@Table(name = "notes")
-public class Note {
+@Table(name = "list_items")
+public class ListItem {
 	//adding in variables per the TDD
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-
-	private int shoppingListItemId;
-	private String body;
+	private int shoppingListId;
+	private String contents;
+	private boolean isChecked;
 	//created custom class to create a DateTimeOffset since it is a SQL only type of variable
 	private Date createdUtc;
 	private Date modifiedUtc;
+	//casting a series of enums as integers for a series of different outputs
+	private Priority priority;
 
 	//getters setters and hash coding and equals for variables
 	public int getId() {
@@ -32,23 +35,32 @@ public class Note {
 		this.id = id;
 	}
 
-	public int getShoppingListItemId() {
-		return shoppingListItemId;
+	public int getShoppingListId() {
+		return shoppingListId;
 	}
 
-	public void setShoppingListItemId(int shoppingListItemId) {
-		this.shoppingListItemId = shoppingListItemId;
+	public void setShoppingListId(int shoppingListId) {
+		this.shoppingListId = shoppingListId;
 	}
 
-	public String getBody() {
-		return body;
+	public String getContents() {
+		return contents;
 	}
 
-	public void setBody(String body) {
-		this.body = body;
+	public void setContents(String contents) {
+		this.contents = contents;
+	}
+
+	public boolean isChecked() {
+		return isChecked;
+	}
+
+	public void setChecked(boolean isChecked) {
+		this.isChecked = isChecked;
 	}
 
 	
+
 	public Date getCreatedUtc() {
 		return createdUtc;
 	}
@@ -65,15 +77,25 @@ public class Note {
 		this.modifiedUtc = modifiedUtc;
 	}
 
+	public Priority getPriority() {
+		return priority;
+	}
+
+	public void setPriority(Priority priority) {
+		this.priority = priority;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((body == null) ? 0 : body.hashCode());
+		result = prime * result + ((contents == null) ? 0 : contents.hashCode());
 		result = prime * result + ((createdUtc == null) ? 0 : createdUtc.hashCode());
 		result = prime * result + id;
+		result = prime * result + (isChecked ? 1231 : 1237);
 		result = prime * result + ((modifiedUtc == null) ? 0 : modifiedUtc.hashCode());
-		result = prime * result + shoppingListItemId;
+		result = prime * result + ((priority == null) ? 0 : priority.hashCode());
+		result = prime * result + shoppingListId;
 		return result;
 	}
 
@@ -85,11 +107,11 @@ public class Note {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Note other = (Note) obj;
-		if (body == null) {
-			if (other.body != null)
+		ListItem other = (ListItem) obj;
+		if (contents == null) {
+			if (other.contents != null)
 				return false;
-		} else if (!body.equals(other.body))
+		} else if (!contents.equals(other.contents))
 			return false;
 		if (createdUtc == null) {
 			if (other.createdUtc != null)
@@ -98,14 +120,20 @@ public class Note {
 			return false;
 		if (id != other.id)
 			return false;
+		if (isChecked != other.isChecked)
+			return false;
 		if (modifiedUtc == null) {
 			if (other.modifiedUtc != null)
 				return false;
 		} else if (!modifiedUtc.equals(other.modifiedUtc))
 			return false;
-		if (shoppingListItemId != other.shoppingListItemId)
+		if (priority != other.priority)
+			return false;
+		if (shoppingListId != other.shoppingListId)
 			return false;
 		return true;
 	}
+	
+	
 
 }
