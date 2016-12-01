@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layouts/basic">
+<link rel="stylesheet" th:href="@{/templates.css/main.css}" />
 <head>
 <title>Getting Started: Serving Web Content</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -10,6 +11,14 @@ table, th, td {
 	border: 1px solid black;
 	border-collapse: collapse;
 	padding: 15px;
+}
+
+input[type=checkbox]:checked+label.strikethrough {
+	text-decoration: line-through;
+}
+
+.strikethrough:checked+.strikeThis {
+	text-decoration: line-through
 }
 </style>
 </head>
@@ -22,16 +31,18 @@ table, th, td {
 		<table>
 			<thead>
 				<tr>
-					<th>&nbsp;</th>
 					<th>Name</th>
 					<th>&nbsp;</th>
 					<th>&nbsp;</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody class="list">
 				<tr th:each="list : ${lists}">
-					<td><input type="checkbox" name="name1" />&nbsp;</td>
-					<td th:text="${list.name}"></td>
+
+					<td><input type="checkbox" name="check" class="strikethrough"
+						value="1" /> <label for="check" class="strikeThis"
+						th:text="${list.name}"> </label></td>
+					<!-- 	<td th:text="${list.name}"></td> -->
 					<td><a href="/" th:href="@{|/ListsofLists/${list.id}|}">Show</a></td>
 					<td><form method="POST">
 							<input type="hidden" name="listId" th:value="${list.id}" />
