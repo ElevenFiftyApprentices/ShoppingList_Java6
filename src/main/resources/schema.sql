@@ -6,8 +6,8 @@ CREATE TABLE IF NOT EXISTS shoppinglist.lists (
   user_id INT UNSIGNED NOT NULL,
   name VARCHAR(45) NOT NULL,
   color VARCHAR(45) NOT NULL,
-  created_utc TIMESTAMP NOT NULL,
-  modified_utc TIMESTAMP NOT NULL,
+  created_utc TIMESTAMP  NOT NULL,
+  modified_utc TIMESTAMP  NOT NULL,
   PRIMARY KEY(id));
 
 CREATE TABLE IF NOT EXISTS shoppinglist.list_items (

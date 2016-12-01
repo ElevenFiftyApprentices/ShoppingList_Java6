@@ -1,12 +1,13 @@
 package org.elevenfifty.shopping.beans;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.elevenfifty.shopping.DateTimeOffset;
 
 @Entity
 @Table(name = "notes")
@@ -19,8 +20,8 @@ public class Note {
 	private int shoppingListItemId;
 	private String body;
 	//created custom class to create a DateTimeOffset since it is a SQL only type of variable
-	private DateTimeOffset createdUtc;
-	private DateTimeOffset modifiedUtc;
+	private Date createdUtc;
+	private Date modifiedUtc;
 
 	//getters setters and hash coding and equals for variables
 	public int getId() {
@@ -47,19 +48,20 @@ public class Note {
 		this.body = body;
 	}
 
-	public DateTimeOffset getCreatedUtc() {
+	
+	public Date getCreatedUtc() {
 		return createdUtc;
 	}
 
-	public void setCreatedUtc(DateTimeOffset createdUtc) {
+	public void setCreatedUtc(Date createdUtc) {
 		this.createdUtc = createdUtc;
 	}
 
-	public DateTimeOffset getModifiedUtc() {
+	public Date getModifiedUtc() {
 		return modifiedUtc;
 	}
 
-	public void setModifiedUtc(DateTimeOffset modifiedUtc) {
+	public void setModifiedUtc(Date modifiedUtc) {
 		this.modifiedUtc = modifiedUtc;
 	}
 
