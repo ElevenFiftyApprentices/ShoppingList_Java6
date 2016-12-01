@@ -18,9 +18,8 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="shoppingListItem : ${list_items}">
-					<td th:text="${}"> <input type="checkbox" name="checked" th:value="${shoppingListItem.ischecked}"></td>
-					<td th:text="${shoppingListItem.contents}"></td>
+				<tr th:each="listitem : ${list_items}">
+					<td th:text="${listitem.contents}"></td>
 					<td><form method="POST" ><input type="hidden" name="listId" th:value="${}"/><button type="submit">Delete</button></form></td>
 				</tr>
 			</tbody>
