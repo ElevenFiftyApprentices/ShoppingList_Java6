@@ -1,12 +1,13 @@
 package org.elevenfifty.shopping.beans;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.elevenfifty.shopping.DateTimeOffset;
 
 
 
@@ -22,8 +23,8 @@ public class ShoppingList {
 	private String name;
 	private String color;
 	//created custom class to create a DateTimeOffset since it is a SQL only type of variable
-	private DateTimeOffset createdUtc;
-	private DateTimeOffset modifiedUtc;
+	private Date createdUtc;
+	private Date modifiedUtc;
 
 	public int getId() {
 		return id;
@@ -57,21 +58,25 @@ public class ShoppingList {
 		this.color = color;
 	}
 
-	public DateTimeOffset getCreatedUtc() {
+	
+	public Date getCreatedUtc() {
 		return createdUtc;
 	}
 
-	public void setCreatedUtc(DateTimeOffset createdUtc) {
+	public void setCreatedUtc(Date createdUtc) {
 		this.createdUtc = createdUtc;
 	}
 
-	public DateTimeOffset getModifiedUtc() {
+	public Date getModifiedUtc() {
 		return modifiedUtc;
 	}
 
-	public void setModifiedUtc(DateTimeOffset modifiedUtc) {
+	public void setModifiedUtc(Date modifiedUtc) {
 		this.modifiedUtc = modifiedUtc;
 	}
+
+
+	
 
 	@Override
 	public int hashCode() {

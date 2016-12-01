@@ -1,12 +1,13 @@
 package org.elevenfifty.shopping.beans;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.elevenfifty.shopping.DateTimeOffset;
 import org.elevenfifty.shopping.Priority;
 
 @Entity
@@ -20,8 +21,8 @@ public class ShoppingListItem {
 	private String contents;
 	private boolean isChecked;
 	//created custom class to create a DateTimeOffset since it is a SQL only type of variable
-	private DateTimeOffset createdUtc;
-	private DateTimeOffset modifiedUtc;
+	private Date createdUtc;
+	private Date modifiedUtc;
 	//casting a series of enums as integers for a series of different outputs
 	private Priority priority;
 
@@ -58,19 +59,21 @@ public class ShoppingListItem {
 		this.isChecked = isChecked;
 	}
 
-	public DateTimeOffset getCreatedUtc() {
+	
+
+	public Date getCreatedUtc() {
 		return createdUtc;
 	}
 
-	public void setCreatedUtc(DateTimeOffset createdUtc) {
+	public void setCreatedUtc(Date createdUtc) {
 		this.createdUtc = createdUtc;
 	}
 
-	public DateTimeOffset getModifiedUtc() {
+	public Date getModifiedUtc() {
 		return modifiedUtc;
 	}
 
-	public void setModifiedUtc(DateTimeOffset modifiedUtc) {
+	public void setModifiedUtc(Date modifiedUtc) {
 		this.modifiedUtc = modifiedUtc;
 	}
 
