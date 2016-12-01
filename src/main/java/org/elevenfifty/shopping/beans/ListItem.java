@@ -17,7 +17,7 @@ public class ListItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	private int shoppingListId;
+	private int listId;
 	private String contents;
 	private boolean isChecked;
 	//created custom class to create a DateTimeOffset since it is a SQL only type of variable
@@ -35,12 +35,12 @@ public class ListItem {
 		this.id = id;
 	}
 
-	public int getShoppingListId() {
-		return shoppingListId;
+	public int getListId() {
+		return listId;
 	}
 
-	public void setShoppingListId(int shoppingListId) {
-		this.shoppingListId = shoppingListId;
+	public void setListId(int listId) {
+		this.listId = listId;
 	}
 
 	public String getContents() {
@@ -95,7 +95,7 @@ public class ListItem {
 		result = prime * result + (isChecked ? 1231 : 1237);
 		result = prime * result + ((modifiedUtc == null) ? 0 : modifiedUtc.hashCode());
 		result = prime * result + ((priority == null) ? 0 : priority.hashCode());
-		result = prime * result + shoppingListId;
+		result = prime * result + listId;
 		return result;
 	}
 
@@ -129,7 +129,7 @@ public class ListItem {
 			return false;
 		if (priority != other.priority)
 			return false;
-		if (shoppingListId != other.shoppingListId)
+		if (listId != other.listId)
 			return false;
 		return true;
 	}

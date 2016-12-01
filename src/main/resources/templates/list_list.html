@@ -3,7 +3,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layouts/basic">
 <head>
-<title>Getting Started: Serving Web Content</title>
+<title>Shopping List Items</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body layout:fragment="content">
@@ -18,8 +18,8 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="listitem : ${list_items}">
-					<td th:text="${listitem.contents}"></td>
+				<tr th:each="listItem : ${listItems}">
+					<td th:text="${listItem.contents}"></td>
 					<td><form method="POST" ><input type="hidden" name="listId" th:value="${}"/><button type="submit">Delete</button></form></td>
 				</tr>
 			</tbody>

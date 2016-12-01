@@ -17,7 +17,7 @@ public class Note {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	private int shoppingListItemId;
+	private int itemId;
 	private String body;
 	//created custom class to create a DateTimeOffset since it is a SQL only type of variable
 	private Date createdUtc;
@@ -33,11 +33,11 @@ public class Note {
 	}
 
 	public int getShoppingListItemId() {
-		return shoppingListItemId;
+		return itemId;
 	}
 
-	public void setShoppingListItemId(int shoppingListItemId) {
-		this.shoppingListItemId = shoppingListItemId;
+	public void setItemId(int itemId) {
+		this.itemId = itemId;
 	}
 
 	public String getBody() {
@@ -73,7 +73,7 @@ public class Note {
 		result = prime * result + ((createdUtc == null) ? 0 : createdUtc.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((modifiedUtc == null) ? 0 : modifiedUtc.hashCode());
-		result = prime * result + shoppingListItemId;
+		result = prime * result + itemId;
 		return result;
 	}
 
@@ -103,7 +103,7 @@ public class Note {
 				return false;
 		} else if (!modifiedUtc.equals(other.modifiedUtc))
 			return false;
-		if (shoppingListItemId != other.shoppingListItemId)
+		if (itemId != other.itemId)
 			return false;
 		return true;
 	}
