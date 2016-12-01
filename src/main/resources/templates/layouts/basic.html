@@ -4,10 +4,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">Shopping List</title>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-	
+<link rel="stylesheet" th:href="@{/templates.css/main.css}" />	
 	<style>
 		.tempfix {
 			margin-top: 50px;
+		}
+		
+		input[type=checkbox]:checked + label.strikethrough{
+  			text-decoration: line-through;
 		}
 	</style>
 </head>
