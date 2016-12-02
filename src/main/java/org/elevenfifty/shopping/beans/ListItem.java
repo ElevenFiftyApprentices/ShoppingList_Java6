@@ -67,6 +67,7 @@ public class ListItem {
 
 	public void setCreatedUtc(Date createdUtc) {
 		this.createdUtc = createdUtc;
+		
 	}
 
 	public Date getModifiedUtc() {
