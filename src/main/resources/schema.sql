@@ -1,7 +1,6 @@
-CREATE SCHEMA IF NOT EXISTS shoppinglist;
-USE shoppinglist ;
+USE heroku_954c820b76f9b7e ;
 
-CREATE TABLE IF NOT EXISTS shoppinglist.lists (
+CREATE TABLE IF NOT EXISTS heroku_954c820b76f9b7e.lists (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   user_id INT UNSIGNED NOT NULL,
   name VARCHAR(45) NOT NULL,
@@ -10,7 +9,7 @@ CREATE TABLE IF NOT EXISTS shoppinglist.lists (
   modified_utc TIMESTAMP  NOT NULL,
   PRIMARY KEY(id));
 
-CREATE TABLE IF NOT EXISTS shoppinglist.list_items (
+CREATE TABLE IF NOT EXISTS heroku_954c820b76f9b7e.list_items (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   list_id INT UNSIGNED NOT NULL,
   contents VARCHAR(45) NOT NULL,
@@ -20,7 +19,7 @@ CREATE TABLE IF NOT EXISTS shoppinglist.list_items (
   modified_utc TIMESTAMP NOT NULL,
   PRIMARY KEY (id));
 
-CREATE TABLE IF NOT EXISTS shoppinglist.notes (
+CREATE TABLE IF NOT EXISTS heroku_954c820b76f9b7e.notes (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   item_id INT UNSIGNED NOT NULL,
   body VARCHAR(1000) NOT NULL,

@@ -23,7 +23,7 @@ public class ListController {
 	private ListRepository listRepo;
 	@Autowired
 	private ListItemRepository listItemRepo;
-
+	
 	@GetMapping("")
 	public String index(Model model, HttpServletRequest request) {
 		return "index";
