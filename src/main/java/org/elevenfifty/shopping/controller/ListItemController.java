@@ -41,9 +41,9 @@ public class ListItemController {
 
 	@PostMapping("/ListsofLists/{id}/add")
 	public String listItemSave(@ModelAttribute @Valid ListItem listItem, BindingResult result, Model model) {
-		listItemRepo.save(listItem);
 		listItem.setCreatedUtc(new Date(System.currentTimeMillis()));
 		listItem.setModifiedUtc(new Date(System.currentTimeMillis()));
+		listItemRepo.save(listItem);
 		return "redirect:/ListsofLists/{id}";
 	}
 
