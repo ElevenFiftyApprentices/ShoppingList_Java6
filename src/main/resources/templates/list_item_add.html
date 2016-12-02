@@ -19,11 +19,11 @@
 				Error</span>
 		</div>
 		<div class="form-group">
-			<label for="priority">Priority</label> <input type="number"
-				name="priority" class="form-control" id="exampleInputPassword1"
-				placeholder="priority" th:field="*{priority}" /> <span
-				th:if="${#fields.hasErrors('priority')}" th:errors="*{priority}">priority
-				error</span>
+			<label for="priority">Priority: </label> <select name="priority">
+				<option th:selected="*{priority} == 0" th:value="0">It can wait</option>
+				<option th:selected="*{priority} == 1" th:value="1">Need it soon</option>
+				<option th:selected="*{priority} == 2" th:value="2">Grab it now</option>
+			</select>
 		</div>
 
 		<!--
@@ -33,7 +33,7 @@
     </label>
   </div>
   -->
-		<button type="submit" class="btn btn-default">Submit</button>
+		<button type="submit" class="btn btn-default">Add</button>
 
 	</form>
 </body>
