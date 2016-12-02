@@ -2,7 +2,7 @@ package org.elevenfifty.shopping.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-
+import org.elevenfifty.shopping.beans.List;
 import org.elevenfifty.shopping.beans.ListItem;
 import org.elevenfifty.shopping.repository.ListItemRepository;
 import org.elevenfifty.shopping.repository.ListRepository;
@@ -36,11 +36,31 @@ public class ListController {
 		return "list_of_lists";
 
 	}
+	//methods for adding and editing lists
+	@GetMapping("/ListsofLists/add")
+	public String listAdd(Model model, @PathVariable(name = "id") int id) {
+		model.addAttribute("id", id);
+		List u = listRepo.findOne(id);
+		model.addAttribute("lists", u);
+		return "add_list";
+	}
+
+	@PostMapping("/ListsofLists/{id}/add")
+	public String listSave(@ModelAttribute @Valid List list, BindingResult result, Model model) {
+		listRepo.save(list);
+		return "redirect:/ListsofLists";
+	}
+	@PostMapping("/ListsofLists")
+	public String listDelete(Model model, @RequestParam(name = "id") int id) {
+
+		listRepo.delete(listRepo.findOne(id));
+		return "redirect:/ListsofLists";
+	}
 
 	// controller for displaying list items
 	@GetMapping("/ListsofLists/{id}")
 	public String listitems(Model model, @PathVariable(name = "id") int id) {
-		model.addAttribute("id",id);
+		model.addAttribute("id", id);
 		model.addAttribute("list_items", listItemRepo.findAll());
 		// yes I am going with listing the lists, I thought it would be funny.
 		return "list_list";
@@ -60,7 +80,8 @@ public class ListController {
 		listItemRepo.save(listItem);
 		return "redirect:/ListsofLists/{id}";
 	}
-//PostMapping for deleting items in a list
+
+	// PostMapping for deleting items in a list
 	@PostMapping("/ListsofLists/{id}")
 	public String listItemDelete(Model model, @RequestParam(name = "id") int id) {
 

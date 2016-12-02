@@ -67,7 +67,7 @@ function repopulateCheckboxes(){
 					<!-- 	<td th:text="${list.name}"></td> -->
 					<td><a href="/" th:href="@{|/ListsofLists/${list.id}|}">Show</a></td>
 					<td><form method="POST">
-							<input type="hidden" name="listId" th:value="${id}" />
+							<input type="hidden" name="listId" th:value="${list.id}" />
 							<button type="submit">Delete</button>
 						</form></td>
 				</tr>
