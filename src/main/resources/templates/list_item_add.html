@@ -11,8 +11,6 @@
 	<form method="POST" th:object="${list_items}"
 		enctype="multipart/form-data">
 		<input type="hidden" name="id" th:field="*{id}" />
-		<input type="hidden" name="utc" th:field="*{createdUtc}" />
-		<input type="hidden" name="utc" th:field="*{modifiedUtc}" />
 		<div class="form-group">
 			<label for="contents">Contents</label> <input type="text"
 				name="contents" class="form-control" id="exampleInputEmail1"
@@ -21,12 +19,12 @@
 				Error</span>
 		</div>
 		<div class="form-group">
-			<label for="priority">Priority: </label> 
-			<select th:field="*{priority}">
-    <option value="Itcanwait">It can wait</option>
-    <option value="Needitsoon">Need it soon</option>
-    <option value="Grabitnow">Grab it now</option>
-</select>
+			<label for="priority">Priority: </label> <select
+				th:field="*{priority}">
+				<option value="Itcanwait">It can wait</option>
+				<option value="Needitsoon">Need it soon</option>
+				<option value="Grabitnow">Grab it now</option>
+			</select>
 		</div>
 
 		<!--

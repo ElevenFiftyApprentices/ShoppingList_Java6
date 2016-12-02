@@ -1,5 +1,7 @@
 package org.elevenfifty.shopping.controller;
 
+import java.util.Date;
+
 import javax.validation.Valid;
 
 import org.elevenfifty.shopping.beans.ListItem;
@@ -19,8 +21,6 @@ public class ListItemController {
 	@Autowired
 	private ListItemRepository listItemRepo;
 
-
-	
 	// controller for displaying list items
 	@GetMapping("/ListsofLists/{id}")
 	public String listitems(Model model, @PathVariable(name = "id") int id) {
@@ -40,8 +40,10 @@ public class ListItemController {
 	}
 
 	@PostMapping("/ListsofLists/{id}/add")
-	public String listItemSave( @ModelAttribute @Valid ListItem listItem, BindingResult result, Model model) {
+	public String listItemSave(@ModelAttribute @Valid ListItem listItem, BindingResult result, Model model) {
 		listItemRepo.save(listItem);
+		listItem.setCreatedUtc(new Date(System.currentTimeMillis()));
+		listItem.setModifiedUtc(new Date(System.currentTimeMillis()));
 		return "redirect:/ListsofLists/{id}";
 	}
 
