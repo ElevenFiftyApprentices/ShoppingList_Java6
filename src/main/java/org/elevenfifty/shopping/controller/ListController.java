@@ -51,8 +51,8 @@ public class ListController {
 		return "redirect:/ListsofLists";
 	}
 	@PostMapping("/ListsofLists")
-	public String listDelete(Model model, @RequestParam(name = "id")int id) {
-		listRepo.delete(listRepo.findOne(id));
+	public String listDelete(Model model, @RequestParam(name = "listId")int listId) {
+		listRepo.delete(listRepo.findOne(listId));
 		return "redirect:/ListsofLists";
 	}
 
