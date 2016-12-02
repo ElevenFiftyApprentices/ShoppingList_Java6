@@ -105,11 +105,8 @@ $.each(checkboxValues, function(key, value) {
 						value="1" onclick="saveCheckbox()"/> <label for="check" class="strikeThis"
 						th:text="${list.name}"> </label></td>
 					<!-- 	<td th:text="${list.name}"></td> -->
-<<<<<<< HEAD
 					<td><a href="/" th:href="@{|/ListsofLists/${id}|}">Show</a></td>
-=======
 					<td><button type="button" class="btn btn-info" href="/" th:href="@{|/ListsofLists/${list.id}|}">Show</button></td>
->>>>>>> sydney
 					<td><form method="POST">
 							<input type="hidden" name="listId" th:value="${id}" />
 							<button type="submit">Delete</button>
