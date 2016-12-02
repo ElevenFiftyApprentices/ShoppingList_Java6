@@ -41,8 +41,7 @@ public class ListController {
 	// controller for displaying list items
 	@GetMapping("/ListsofLists/{id}")
 	public String listitems(Model model, @PathVariable(name = "id") int id) {
-		model.addAttribute("id", id);
-		// never forget to import the proper beans!
+		model.addAttribute("id",id);
 		model.addAttribute("list_items", listItemRepo.findAll());
 		// yes I am going with listing the lists, I thought it would be funny.
 		return "list_list";
