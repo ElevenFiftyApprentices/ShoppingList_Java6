@@ -21,14 +21,12 @@
 				Error</span>
 		</div>
 		<div class="form-group">
-			<label for="priority">Priority: </label> <select name="priority">
-				<option th:selected="*{priority} == 0" value="0">It can
-					wait</option>
-				<option th:selected="*{priority} == 1" value="1">Need it
-					soon</option>
-				<option th:selected="*{priority} == 2" value="2">Grab it
-					now</option>
-			</select>
+			<label for="priority">Priority: </label> 
+			<select th:field="*{priority}">
+    <option value="0">It can wait</option>
+    <option value="1">Need it soon</option>
+    <option value="2">Grab it now</option>
+</select>
 		</div>
 
 		<!--
