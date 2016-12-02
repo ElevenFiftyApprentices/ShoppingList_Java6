@@ -3,32 +3,51 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layouts/basic">
 <head>
+<style>
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 15px;
+}
+
+input[type=checkbox]:checked+label.strikethrough {
+	text-decoration: line-through;
+}
+
+.strikethrough:checked+.strikeThis {
+	text-decoration: line-through
+}
+</style>
 <title>Shopping List Items</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body layout:fragment="content">
 	<h1>Shopping List items</h1>
 	<!--button to add items check with controller listItemAdd-->
-<a href="/" th:href="@{|ListsofLists/item/add|}"><input type="button"
-			value="Add Item" /></a>
-		<table>
-			<thead>
-				<tr>
-					<th>&nbsp;</th>
-					<th>Content</th>
-					<th>Options</th>
-				</tr>
-			</thead>
-			<tbody>
+	<a href="/" th:href="@{|ListsofLists/${id}/add|}"><input
+		type="button" value="Add Item" /></a>
+	<table>
+		<thead>
+			<tr>
+				<th>&nbsp;</th>
+				<th>Content</th>
+				<th>Options</th>
+			</tr>
+		</thead>
+		<tbody>
 			<!-- Display's items in lists check 
 			ListController listitems -->
-				<tr th:each="listItem : ${listItems}">
-					<td th:text="${listItem.contents}"></td>
-					<!-- Delete button check ListController listItemDelete -->
-					<td><form method="POST" ><input type="hidden" name="listId" th:value="${}"/><button type="submit">Delete</button></form></td>
-				</tr>
-			</tbody>
-		</table>
+			<tr th:each="listItem : ${list_items}">
+				<td>&nbsp;</td>
+				<td th:text="${listItem.contents}"></td>
+				<!-- Delete button check ListController listItemDelete -->
+				<td><form method="POST">
+						<input type="hidden" name="id" th:value="${listItem.id}" />
+						<button type="submit">Delete</button>
+					</form></td>
+			</tr>
+		</tbody>
+	</table>
 
 	<a href="/">Back</a>
 </body>

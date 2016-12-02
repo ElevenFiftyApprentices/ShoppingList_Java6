@@ -48,7 +48,7 @@ public class ListController {
 	}
 
 	// GetMapping and PostMapping for editing items in lists.
-	@GetMapping("/ListsofLists/item/add")
+	@GetMapping("/ListsofLists/{id}/add")
 	public String listItemAdd(Model model, @PathVariable(name = "id") int id) {
 		model.addAttribute("id", id);
 		ListItem u = listItemRepo.findOne(id);
@@ -56,7 +56,7 @@ public class ListController {
 		return "list_item_add";
 	}
 
-	@PostMapping("/ListsofLists/{id}/edit")
+	@PostMapping("/ListsofLists/{id}/add")
 	public String listItemSave(@ModelAttribute @Valid ListItem listItem, BindingResult result, Model model) {
 		listItemRepo.save(listItem);
 		return "redirect:/ListsofLists/{id}";
