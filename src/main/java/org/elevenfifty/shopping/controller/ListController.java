@@ -30,26 +30,26 @@ public class ListController {
 		return "index";
 	}
 
+	// method for displaying lists
 	@GetMapping("/ListsofLists")
 	public String List(Model model) {
 		model.addAttribute("lists", listRepo.findAll());
 		return "list_of_lists";
-		
+
 	}
 
+	// controller for displaying list items
 	@GetMapping("/ListsofLists/{id}")
 	public String listitems(Model model, @PathVariable(name = "id") int id) {
 		model.addAttribute("id", id);
 		// never forget to import the proper beans!
-		//ListItem u = listItemRepo.findOne(id);
-		
 		model.addAttribute("list_items", listItemRepo.findAll());
 		// yes I am going with listing the lists, I thought it would be funny.
 		return "list_list";
 	}
 
 	// GetMapping and PostMapping for editing items in lists.
-	@GetMapping("/ListsofLists/{id}/add")
+	@GetMapping("/ListsofLists/item/add")
 	public String listItemAdd(Model model, @PathVariable(name = "id") int id) {
 		model.addAttribute("id", id);
 		ListItem u = listItemRepo.findOne(id);
@@ -57,15 +57,16 @@ public class ListController {
 		return "list_item_add";
 	}
 
-	@PostMapping("/ListsofLists/{userId}/edit")
-	public String listEditSave(@ModelAttribute @Valid ListItem listItem, BindingResult result, Model model) {
+	@PostMapping("/ListsofLists/{id}/edit")
+	public String listItemSave(@ModelAttribute @Valid ListItem listItem, BindingResult result, Model model) {
 		listItemRepo.save(listItem);
 		return "redirect:/ListsofLists/{id}";
 	}
+//PostMapping for deleting items in a list
 	@PostMapping("/ListsofLists/{id}")
-	public String listItemDelete( Model model, @RequestParam(name = "id") int id) {
-		
+	public String listItemDelete(Model model, @RequestParam(name = "id") int id) {
+
 		listItemRepo.delete(listItemRepo.findOne(id));
-		return "redirect:/ListsofLists/{id}" ;
+		return "redirect:/ListsofLists/{id}";
 	}
 }

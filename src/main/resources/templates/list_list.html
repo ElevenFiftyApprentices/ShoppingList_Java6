@@ -8,7 +8,9 @@
 </head>
 <body layout:fragment="content">
 	<h1>Shopping List items</h1>
-
+	<!--button to add items check with controller listItemAdd-->
+<a href="/" th:href="@{|ListsofLists/item/add|}"><input type="button"
+			value="Add Item" /></a>
 		<table>
 			<thead>
 				<tr>
@@ -18,8 +20,11 @@
 				</tr>
 			</thead>
 			<tbody>
+			<!-- Display's items in lists check 
+			ListController listitems -->
 				<tr th:each="listItem : ${listItems}">
 					<td th:text="${listItem.contents}"></td>
+					<!-- Delete button check ListController listItemDelete -->
 					<td><form method="POST" ><input type="hidden" name="listId" th:value="${}"/><button type="submit">Delete</button></form></td>
 				</tr>
 			</tbody>
