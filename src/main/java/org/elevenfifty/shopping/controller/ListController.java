@@ -3,7 +3,6 @@ package org.elevenfifty.shopping.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-import org.elevenfifty.shopping.beans.List;
 import org.elevenfifty.shopping.beans.ListItem;
 import org.elevenfifty.shopping.repository.ListItemRepository;
 import org.elevenfifty.shopping.repository.ListRepository;
