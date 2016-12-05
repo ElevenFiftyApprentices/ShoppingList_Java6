@@ -32,10 +32,9 @@ public class ListItemController {
 
 	// GetMapping and PostMapping for editing items in lists.
 	@GetMapping("/ListsofLists/{id}/add")
-	public String listItemAdd(Model model, @PathVariable(name = "id") int id) {
-		model.addAttribute("id", id);
-		ListItem u = listItemRepo.findOne(id);
-		model.addAttribute("list_items", u);
+	public String listItemAdd(Model model, ListItem listItem) {
+		 ListItem u = new ListItem();
+		 model.addAttribute(listItem);
 		return "list_item_add";
 	}
 
@@ -50,7 +49,6 @@ public class ListItemController {
 	// PostMapping for deleting items in a list
 	@PostMapping("/ListsofLists/{id}")
 	public String listItemDelete(Model model, @RequestParam(name = "id") int id) {
-
 		listItemRepo.delete(listItemRepo.findOne(id));
 		return "redirect:/ListsofLists/{id}";
 	}

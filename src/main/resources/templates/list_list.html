@@ -120,9 +120,9 @@ $.each(checkboxValues, function(key, value) {
 
 						<td><input type="checkbox" name="check" class="strikethrough"
 							value="1" /><label for="check" class="strikeThis"
-							th:text="${listItem.contents}}" onclick="saveCheckbox()"> </label></td>
+							th:text="${listItem.contents}" onclick="saveCheckbox()"> </label></td>
 						<td><form method="POST">
-								<input type="hidden" name="listId" th:value="${listItem.id}" />
+								<input type="hidden" name="id" th:value="${listItem.id}" />
 								<button type="submit">Delete</button>
 							</form></td>
 					</tr>
