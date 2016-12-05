@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "lists")
 public class List {
-	//adding in variables per the TDD
+	//Anthony: adding in variables per the TDD
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
@@ -22,7 +22,7 @@ public class List {
 	private int userId;
 	private String name;
 	private String color;
-	//use Java.util.Date for this to mesh with SQL timestamp
+	//Anthony: use Java.util.Date for this to mesh with SQL timestamp
 	private Date createdUtc;
 	private Date modifiedUtc;
 
