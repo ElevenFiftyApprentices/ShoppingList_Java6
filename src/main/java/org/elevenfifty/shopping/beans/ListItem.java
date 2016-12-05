@@ -38,6 +38,7 @@ public class ListItem {
 	public int getListId() {
 		return listId;
 	}
+	
 
 	public void setListId(int listId) {
 		this.listId = listId;

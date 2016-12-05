@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS heroku_954c820b76f9b7e.lists (
   user_id INT UNSIGNED NOT NULL,
   name VARCHAR(45) NOT NULL,
   color VARCHAR(45) NOT NULL,
+  is_checked tinyint(1) NOT NULL DEFAULT 0,
   created_utc TIMESTAMP  NOT NULL,
   modified_utc TIMESTAMP  NOT NULL,
   PRIMARY KEY(id));
