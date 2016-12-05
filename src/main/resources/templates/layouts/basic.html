@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.springframework.org/schema/security">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">Shopping List</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+<link rel="stylesheet" th:href="@{/templates.css/main.css}" />	
+	<style>
+		.tempfix {
+			margin-top: 50px;
+		}
+		
+		input[type=checkbox]:checked + label.strikethrough{
+  			text-decoration: line-through;
+		}
+	</style>
+</head>
+<body>
+	<div class="container tempfix">
+		<div th:replace="snippets/header :: header"></div>
+	
+		<div layout:fragment="content"></div>
+
+		<div th:replace="snippets/footer :: footer"></div>
+	</div>
+	
+	<div th:replace="snippets/scripts :: scripts"></div>
+</body>
+</html>

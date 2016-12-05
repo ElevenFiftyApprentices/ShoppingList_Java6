@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/basic">
+<head>
+<title>Getting Started: Serving Web Content</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body layout:fragment="content">
+	<h1>Add Item</h1>
+	<form method="POST" th:object="${list_items}"
+		enctype="multipart/form-data">
+		<input type="hidden" name="id" th:field="*{id}" /> <input
+			type="hidden" name="utc" th:field="*{createdUtc}" /> <input
+			type="hidden" name="utc" th:field="*{modifiedUtc}" />
+		<div class="form-group">
+			<label for="contents">Contents</label> <input type="text"
+				name="contents" class="form-control" id="exampleInputEmail1"
+				placeholder="Contents" th:field="*{contents}" /> <span
+				th:if="${#fields.hasErrors('Contents')}" th:errors="*{contents}">Contents
+				Error</span>
+		</div>
+		<div class="form-group">
+			<label for="priority">Priority: </label> <select name="priority">
+				<option th:selected="*{priority} == 0" value="0">It can
+					wait</option>
+				<option th:selected="*{priority} == 1" value="1">Need it
+					soon</option>
+				<option th:selected="*{priority} == 2" value="2">Grab it
+					now</option>
+			</select>
+		</div>
+
+		<!--
+  <div class="checkbox">
+    <label>
+      <input type="checkbox"> Check me out
+    </label>
+  </div>
+  -->
+		<button type="submit" class="btn btn-default">Add</button>
+
+	</form>
+</body>
+</html>
