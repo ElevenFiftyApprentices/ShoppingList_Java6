@@ -63,43 +63,7 @@ input[type=text] {
   border-radius: 4px;
 }
 
-</style>
-
-<script type="text/javascript" th:inline="javascript">
-<script th:inline="javascript" >
-
-var checkboxValues = {};
-$(":checkbox").each(function(){
-  checkboxValues[this.id] = this.checked;
-/* TEST CODE */
-/*<![CDATA[*/
-var checkboxValues = JSON.parse(localStorage.getItem('checkboxValues')) || {},
-    $checkboxes = $("#checkbox-container :checkbox");
-
-$checkboxes.on("change", function(){
-  $checkboxes.each(function(){
-    checkboxValues[this.id] = this.checked;
-  });
-  
-  localStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
-});
-$.cookie('checkboxValues', checkboxValues, { expires: 7, path: '/' })
-
-function repopulateCheckboxes(){
-  var checkboxValues = $.cookie('checkboxValues');
-  if(checkboxValues){
-    Object.keys(checkboxValues).forEach(function(element) {
-      var checked = checkboxValues[element];
-      $("#" + element).prop('checked', checked);
-    });
-  }
-}
-
-// On page load
-$.each(checkboxValues, function(key, value) {
-  $("#" + key).prop('checked', value);
-});
-/*]]>*/
+</style
 </script>
 
 </head>
@@ -117,7 +81,6 @@ $.each(checkboxValues, function(key, value) {
 			<thead>
 				<tr>
 					<th>Name</th>
-@@ -58,14 +98,14 @@ function repopulateCheckboxes(){
 					<th>&nbsp;</th>
 				</tr>
 			</thead>
@@ -127,8 +90,7 @@ $.each(checkboxValues, function(key, value) {
 				<tr th:each="list : ${lists}" id="checkbox-container">
 
 					<td><input type="checkbox" name="check" class="strikethrough"
-						value="1" /> <label for="check" class="strikeThis"
-						value="1" onclick="saveCheckbox()"/> <label for="check" class="strikeThis"
+						value="1" /> <label for="check" class="strikeThis" /> <label for="check" class="strikeThis"
 						th:text="${list.name}"> </label></td>
 					<!-- 	<td th:text="${list.name}"></td> -->
 					<td><a href="/" th:href="@{|/ListsofLists/${list.id}|}">Show</a></td>
@@ -136,7 +98,6 @@ $.each(checkboxValues, function(key, value) {
 					<td><form method="POST">
 							<input type="hidden" name="listId" th:value="${list.id}" />
 							<button type="submit">Delete</button>
-@@ -73,6 +113,8 @@ function repopulateCheckboxes(){
 				</tr>
 			</tbody>
 		</table>
