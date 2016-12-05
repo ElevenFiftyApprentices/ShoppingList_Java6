@@ -3,9 +3,7 @@ package org.elevenfifty.shopping.beans;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 
@@ -15,13 +13,28 @@ import javax.persistence.Table;
 @Table(name = "lists")
 public class List {
 	//Anthony: adding in variables per the TDD
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JoinColumn(name="id")
 	private int id;
 
+	@JoinColumn(name="user_id")
 	private int userId;
+
+	@JoinColumn(name="name")
 	private String name;
+	
+	@JoinColumn(name="color")
 	private String color;
+	
+	@JoinColumn(name="is_checked")
+	private boolean isChecked;
+	
+	public boolean isChecked() {
+		return isChecked;
+	}
+
+	public void setChecked(boolean isChecked) {
+		this.isChecked = isChecked;
+	}
 	//Anthony: use Java.util.Date for this to mesh with SQL timestamp
 	private Date createdUtc;
 	private Date modifiedUtc;
