@@ -13,20 +13,20 @@ import org.elevenfifty.shopping.Priority;
 @Entity
 @Table(name = "list_items")
 public class ListItem {
-	//adding in variables per the TDD
+	//Anthony: adding in variables per the TDD
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private int listId;
 	private String contents;
 	private boolean isChecked;
-	//created custom class to create a DateTimeOffset since it is a SQL only type of variable
+	//Anthony: created custom class to create a DateTimeOffset since it is a SQL only type of variable Edit: Went with simple Date type
 	private Date createdUtc;
 	private Date modifiedUtc;
-	//casting a series of enums as integers for a series of different outputs
+	//Anthony: casting a series of enums as integers for a series of different outputs
 	private Priority priority;
 
-	//getters setters and hash coding and equals for variables
+	//Anthony: use Java.util.Date for this to mesh with SQL timestamp
 	public int getId() {
 		return id;
 	}
