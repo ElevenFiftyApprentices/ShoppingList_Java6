@@ -28,6 +28,7 @@ public class ListController {
 		return "index";
 	}
 
+	
 	// method for displaying lists
 	@GetMapping("/ListsofLists")
 	public String List(Model model) {
