@@ -8,9 +8,9 @@
 </head>
 <body layout:fragment="content">
 	<h1>Add Item</h1>
-	<form method="POST" th:object="${list_items}"
+	<form method="POST" th:object="${listItem}"
 		enctype="multipart/form-data">
-		<input type="hidden" name="id" th:field="*{id}" /> <input
+		<input type="hidden" name="id" th:field="*{id}"/> <input
 			type="hidden" name="createdUtc" th:field="*{createdUtc}" /> <input
 			type="hidden" name="modifiedUtc" th:field="*{modifiedUtc}" />
 		<div class="form-group">

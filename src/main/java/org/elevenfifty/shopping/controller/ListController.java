@@ -1,5 +1,7 @@
 package org.elevenfifty.shopping.controller;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -28,6 +30,7 @@ public class ListController {
 		return "index";
 	}
 
+	
 	// method for displaying lists
 	@GetMapping("/ListsofLists")
 	public String List(Model model) {
@@ -37,16 +40,16 @@ public class ListController {
 	}
 	//methods for adding and editing lists
 	@GetMapping("/ListsofLists/add")
-	public String listAdd(Model model, @PathVariable(name = "id") int id) {
-		model.addAttribute("id", id);
-		List u = listRepo.findOne(id);
-		model.addAttribute("lists", u);
+	public String listAdd(Model model,List list) {
+		List u = new List();
+		model.addAttribute(list);
 		return "add_list";
 	}
 
 	@PostMapping("/ListsofLists/add")
 	public String listSave(@ModelAttribute @Valid List list, BindingResult result, Model model) {
-		
+		list.setCreatedUtc(new Date(System.currentTimeMillis()));
+		list.setModifiedUtc(new Date(System.currentTimeMillis()));
 		listRepo.save(list);
 		return "redirect:/ListsofLists";
 	}
