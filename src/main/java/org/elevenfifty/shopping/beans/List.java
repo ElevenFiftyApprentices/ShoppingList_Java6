@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "lists")
 public class List {
-	//adding in variables per the TDD
+	//Anthony: adding in variables per the TDD
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@JoinColumn(name="id")
@@ -41,7 +41,7 @@ public class List {
 		this.isChecked = isChecked;
 	}
 
-	//use Java.util.Date for this to mesh with SQL timestamp
+	//Anthony: Using Date to link up with Timestamp in SQL
 	private Date createdUtc;
 	private Date modifiedUtc;
 

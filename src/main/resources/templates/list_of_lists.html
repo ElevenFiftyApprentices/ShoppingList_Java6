@@ -65,7 +65,7 @@ input[type=text] {
 <body layout:fragment="content">
 	<div id="checkbox-container">
 		<h1>Shopping Lists</h1>
-		<!-- a simple button for later to add shopping lists -->
+		<!-- Anthony: a simple button for later to add shopping lists -->
 		<!-- <button type="button" class="btn btn-danger" /><a href="/" th:href="@{|/ListsofLists/add|}"></a></button> -->
 		<button type="button" class="btn btn-success"><a href="/" th:href="@{|/ListsofLists/add|}"></a>Add List</button>
 		<table class="table table-striped" id="checkbox-container">
@@ -104,7 +104,7 @@ input[type=text] {
 
 					<td><button type="button" class="btn btn-info" href="/" th:href="@{|/ListsofLists/${list.id}|}">Show</button></td>
 
-					<!-- Delete button -->
+					<!--Anthony: Delete button -->
 =======
 					<td><a href="/" th:href="@{|/ListsofLists/${list.id}|}"><button type="button" class="btn btn-info">Show</button></a></td>
 >>>>>>> fd94be1d9361d72cf6090e87bc39ecc7a881c100
