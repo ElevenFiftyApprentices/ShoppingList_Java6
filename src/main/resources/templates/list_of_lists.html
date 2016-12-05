@@ -61,7 +61,6 @@ input[type=text] {
 
 </style>
 
-
 </head>
 <body layout:fragment="content">
 	<div id="checkbox-container">
@@ -77,20 +76,45 @@ input[type=text] {
 					<th>&nbsp;</th>
 				</tr>
 			</thead>
-			<tbody id="checkbox-container">
-				<tr th:each="list : ${lists}" id="checkbox-container">
+			<tbody>
+				<tr th:each="list : ${lists}">
+				
+				<!-- Sydney: checkbox code? -->
+				<td style="padding-top:20px" th:if="${list.isChecked} == true"><a
+						th:href="@{|/ListOfLists/|}"><i
+							class="fa fa-check-square-o" aria-hidden="true"></i></a></td>
+							
+					<td style="padding-top:20px" th:if="${list.isChecked} == false"><a
+						th:href="@{|/ListOfLists/|}"><i
+							class="fa fa-square-o" aria-hidden="true"></i></a></td>
+							
+					<td style="padding-top:20px" th:if="${list.isChecked} == true">
+						<p style="text-decoration: line-through; padding-top:20px"
+							th:utext="${list.name}"></p>
+					</td>
 
-					<td><input type="checkbox" name="check" class="strikethrough"
-						value="1" onclick="saveCheckbox()"/> <label for="check" class="strikeThis"
+					<td style="padding-top:20px" th:if="${list.isChecked} == false" th:utext="${list.name}"></td>
+
+					<td><input type="checkbox" name="check" class="strikethrough"/> <label for="check" class="strikeThis"
 						th:text="${list.name}"> </label></td>
 					<!-- 	<td th:text="${list.name}"></td> -->
+<<<<<<< HEAD
+
+					<td><a href="/" th:href="@{|/ListsofLists/${id}|}">Show</a></td>
+
+					<td><button type="button" class="btn btn-info" href="/" th:href="@{|/ListsofLists/${list.id}|}">Show</button></td>
+
+					<!-- Delete button -->
+=======
 					<td><a href="/" th:href="@{|/ListsofLists/${list.id}|}"><button type="button" class="btn btn-info">Show</button></a></td>
+>>>>>>> fd94be1d9361d72cf6090e87bc39ecc7a881c100
 					<td><form method="POST">
 							<input type="hidden" name="listId" th:value="${list.id}" />
 							<button type="submit">Delete</button>
 						</form></td>
 				</tr>
 			</tbody>
+
 		</table>
 			
 	</div>
