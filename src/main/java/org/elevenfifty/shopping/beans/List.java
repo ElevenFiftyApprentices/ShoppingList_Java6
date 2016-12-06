@@ -16,11 +16,14 @@ import javax.persistence.Table;
 @Table(name = "lists")
 public class List {
 	//adding in variables per the TDD
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@JoinColumn(name="id")
 	private int id;
 
+//	private Lists<String> listOfLists;
+	
 	@JoinColumn(name="user_id")
 	private int userId;
 
@@ -31,15 +34,24 @@ public class List {
 	private String color;
 	
 	@JoinColumn(name="is_checked")
-	private boolean isChecked;
+	public boolean isChecked;
+
 	
 	public boolean isChecked() {
 		return isChecked;
 	}
 
-	public void setChecked(boolean isChecked) {
+	public void setIsChecked(Boolean isChecked) {
 		this.isChecked = isChecked;
 	}
+	
+//	public Lists<String> getListOfLists(){
+//		return listOfLists;
+//	}
+//	
+//	public void setListOfLists(Lists<String> listOfLists){
+//		this.listOfLists = listOfLists;
+//	}
 
 	//use Java.util.Date for this to mesh with SQL timestamp
 	private Date createdUtc;
@@ -95,8 +107,6 @@ public class List {
 	}
 
 
-	
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -145,5 +155,6 @@ public class List {
 			return false;
 		return true;
 	}
+
 
 }
