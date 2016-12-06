@@ -26,7 +26,6 @@ table, th, td {
 					<th>First Name</th>
 					<th>Last Name</th>
 					<th>Email</th>
-					<th>Phone</th>
 					<th>&nbsp;</th>
 					<th>&nbsp;</th>
 				</tr>
@@ -38,7 +37,6 @@ table, th, td {
 					<td th:text="${user.firstName}"></td>
 					<td th:text="${user.lastName}"></td>
 					<td th:text="${user.email}"></td>
-					<td th:text="${user.phoneNumber}"></td>
 					<td><a href="/" th:href="@{|/user/${user.id}|}">View</a></td>
 					<td><a href="/" th:href="@{|/user/${user.id}/edit|}">Edit</a></td>
 				</tr>

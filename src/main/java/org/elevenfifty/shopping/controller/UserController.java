@@ -23,6 +23,13 @@ public class UserController {
 	public String login(Model model) {
 		return "login";
 	}
+	//Anthony: method to display UserList
+	@GetMapping("/user/list")
+	public String userList(Model model) {
+		model.addAttribute("users", userRepo.findAll());
+		return "user_list";
+	}
+
 	// Anthony: method to display User info page
 	@GetMapping("/user/{id}")
 	public String user(Model model, @PathVariable(name = "id") int id) {
@@ -34,7 +41,16 @@ public class UserController {
 
 		return "user_detail";
 	}
-	//Anthony: Methods for creating new users in the user list
+	// Anthony: Method to edit the user info
+	@GetMapping("/user/{id}/edit")
+	public String userEdit(Model model, @PathVariable(name = "id") int id) {
+		model.addAttribute("id", id);
+		User u = userRepo.findOne(id);
+		model.addAttribute("user", u);
+		return "user_edit";
+	}
+
+	// Anthony: Methods for creating new users in the user list
 	@GetMapping("/user/add")
 	public String userAdd(Model model, User user) {
 		User u = new User();
@@ -48,16 +64,16 @@ public class UserController {
 		userRepo.save(user);
 		return "redirect:/user/" + user.getId();
 	}
-	//Anthony: Method for deleting user from user list
+
+	// Anthony: Method for deleting user from user list
 	@PostMapping("/user/list")
-	public String userListDelete( Model model, @RequestParam(name = "userId") int userId) {
-		
+	public String userListDelete(Model model, @RequestParam(name = "userId") int userId) {
+
 		userRepo.delete(userRepo.findOne(userId));
 		return "redirect:/index";
 	}
-	
-	
-	//Anthony: methods for adding a new user through Login page
+
+	// Anthony: methods for adding a new user through Login page
 	@GetMapping("/user/new")
 	public String userNew(Model model, User user) {
 		User u = new User();
@@ -71,12 +87,13 @@ public class UserController {
 		userRepo.save(user);
 		return "redirect:/login";
 	}
-	//Anthony: method for deleting user on user page.
+
+	// Anthony: method for deleting user on user page.
 	@PostMapping("/user/{id}")
-	public String userDelete( Model model, @RequestParam(name = "userId") int userId) {
-		
+	public String userDelete(Model model, @RequestParam(name = "userId") int userId) {
+
 		userRepo.delete(userRepo.findOne(userId));
 		return "redirect:/index";
 	}
-	
+
 }
