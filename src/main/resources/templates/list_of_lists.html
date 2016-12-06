@@ -114,9 +114,9 @@ input[type=text] {
 					</td>
 					<!-- 	<td th:text="${list.name}"></td> -->
 
-					<td><a href="/" th:href="@{|/ListsofLists/${id}|}">Show</a></td>
+					<!-- <td><a href="/" th:href="@{|/ListsofLists/${id}|}">Show</a></td>
 
-					<td><button type="button" class="btn btn-info" href="/" th:href="@{|/ListsofLists/${list.id}|}">Show</button></td>
+					<td><button type="button" class="btn btn-info" href="/" th:href="@{|/ListsofLists/${list.id}|}">Show</button></td>-->
 
 					<!-- Delete button -->
 					<td><a href="/" th:href="@{|/ListsofLists/${list.id}|}"><button type="button" class="btn btn-info">Show</button></a></td>
@@ -128,8 +128,8 @@ input[type=text] {
 			</tbody>
 
 		</table>
-		<form method="post">
-		<input type="hidden" name="listId" th:value="${list.id}"/><button type="submit">Delete Checked Lists</button></form>
+		<!-- <form method="post">
+		<input type="hidden" name="listId" th:value="${list.id}"/><button type="submit">Delete Checked Lists</button></form>-->
 			
 	</div>
 
