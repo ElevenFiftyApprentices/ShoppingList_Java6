@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/basic">
+<head>
+<title>Getting Started: Serving Web Content</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 15px;
+}
+</style>
+</head>
+<body layout:fragment="content">
+	<div class="row">
+		<h1>Users</h1>
+		<a href="/" th:href="@{|/user/add|}"><input type="button"
+			value="Add user" /></a>
+		<table>
+			<thead>
+				<tr>
+					<th>&nbsp;</th>
+					<th>ID</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Email</th>
+					<th>Phone</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="user : ${users}">
+					<td><form method="POST" ><input type="hidden" name="userId" th:value="${user.id}"/><button type="submit">Delete</button></form></td>
+					<td th:text="${user.id}"></td>
+					<td th:text="${user.firstName}"></td>
+					<td th:text="${user.lastName}"></td>
+					<td th:text="${user.email}"></td>
+					<td th:text="${user.phoneNumber}"></td>
+					<td><a href="/" th:href="@{|/user/${user.id}|}">View</a></td>
+					<td><a href="/" th:href="@{|/user/${user.id}/edit|}">Edit</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
