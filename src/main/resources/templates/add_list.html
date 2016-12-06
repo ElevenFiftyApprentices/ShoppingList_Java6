@@ -7,30 +7,28 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body layout:fragment="content">
-	<h1>Add Item</h1>
-	<form method="POST" th:object="${list_items}"
+	<h1>Add List</h1>
+	<form method="POST" th:object="${list}"
 		enctype="multipart/form-data">
 		<input type="hidden" name="id" th:field="*{id}" /> <input
 			type="hidden" name="utc" th:field="*{createdUtc}" /> <input
 			type="hidden" name="utc" th:field="*{modifiedUtc}" />
 		<div class="form-group">
-			<label for="contents">Contents</label> <input type="text"
-				name="contents" class="form-control" id="exampleInputEmail1"
-				placeholder="Contents" th:field="*{contents}" /> <span
-				th:if="${#fields.hasErrors('Contents')}" th:errors="*{contents}">Contents
+			<label for="contents">List Name</label> <input type="text"
+				name="color" class="form-control" id="exampleInputEmail1"
+				placeholder="Name" th:field="*{name}" /> <span
+				th:if="${#fields.hasErrors('name')}" th:errors="*{name}">List Name error
 				Error</span>
 		</div>
+		
 		<div class="form-group">
-			<label for="priority">Priority: </label> <select name="priority">
-				<option th:selected="*{priority} == 0" value="0">It can
-					wait</option>
-				<option th:selected="*{priority} == 1" value="1">Need it
-					soon</option>
-				<option th:selected="*{priority} == 2" value="2">Grab it
-					now</option>
-			</select>
+		<label for="contents">Color</label> <input type="text"
+				name="color" class="form-control" id="exampleInputEmail1"
+				placeholder="Please use hex code" th:field="*{color}" /> <span
+				th:if="${#fields.hasErrors('color')}" th:errors="*{color}">Color error
+				Error</span>
 		</div>
-
+		
 		<!--
   <div class="checkbox">
     <label>
