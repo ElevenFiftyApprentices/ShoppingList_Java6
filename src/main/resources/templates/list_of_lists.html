@@ -109,8 +109,8 @@ input[type=text] {
 <!-- 					<td style="padding-top:20px" th:if="${list.isChecked} == false" th:utext="${list.name}"></td>
  -->
 					<td>
-					<input type="checkbox" name="strikethrough" id="strikethrough"/> <label for="check" class="strikeThis"
-						th:text="${list.name}" th:value="${list.isChecked}==true"> </label>
+					<input type="checkbox" name="listId" id="strikethrough" value="${list.id}" /> <label for="check" class="strikeThis"
+						th:text="${list.name}"> </label>
 					</td>
 					<!-- 	<td th:text="${list.name}"></td> -->
 
@@ -128,8 +128,8 @@ input[type=text] {
 			</tbody>
 
 		</table>
-		<form action="@DeleteMapping(/ListsofLists)">
-		<input type="hidden" name="isChecked" value="${list.isChecked}==true"/><button type="submit">Delete Checked Lists</button></form>
+		<form method="post">
+		<input type="hidden" name="listId" th:value="${list.id}"/><button type="submit">Delete Checked Lists</button></form>
 			
 	</div>
 
