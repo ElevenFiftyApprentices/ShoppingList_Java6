@@ -31,7 +31,7 @@ public class List {
 	private String color;
 	
 	@JoinColumn(name="is_checked")
-	private boolean isChecked;
+	public boolean isChecked;
 	
 	public boolean isChecked() {
 		return isChecked;
