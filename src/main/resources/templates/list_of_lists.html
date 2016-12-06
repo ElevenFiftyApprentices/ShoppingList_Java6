@@ -37,42 +37,22 @@ input[type=text] {
   border-radius: 4px;
 }
 
-/* TEST CODE */
-
-#checkbox-container{
-  margin: 10px 5px;
-}
-
-#checkbox-container div{
-  margin-bottom: 5px;
-}
-
-#checkbox-container button{
-  margin-top: 5px;
-}
-
-input[type=text] {
-  padding: .5em .6em;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-shadow: inset 0 1px 3px #ddd;
-  border-radius: 4px;
-}
-
 </style>
-<script th:inline="javascript">
-/*<![CDATA[*/
-	
-/* $(function (){
-    if($('#strikethrough').val()== "true"){           
-         $("input:checkbox").prop('checked',true);
-    }else{
-        $("input:checkbox").prop('checked', false);
-    }
-}); */
-	
-	/*]]>*/
-</script>
+<script type="text/javascript">
+         
+            function getAlert(){
+               var retVal = alert("Do you want to check the box?");
+               if( retVal == true ){
+                  document.write ("You checked the box!");
+                  return true;
+               }
+               else{
+                  document.write ("You do not want to check the box!");
+                  return false;
+               }
+            }
+         
+      </script>
 
 </head>
 <body layout:fragment="content">
@@ -81,6 +61,9 @@ input[type=text] {
 		<!-- a simple button for later to add shopping lists -->
 		<!-- <button type="button" class="btn btn-danger" /><a href="/" th:href="@{|/ListsofLists/add|}"></a></button> -->
 		<a href="/" th:href="@{|/ListsofLists/add|}"><button type="button" class="btn btn-success">Add List</button></a>
+		
+		<a href="/" th:href="@{|/ListsofLists/|}"><button type="button" class="btn btn-success">Done</button></a>
+		
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -91,32 +74,13 @@ input[type=text] {
 			</thead>
 			<tbody>
 				<tr th:each="list : ${lists}">
-				
-				<!-- Sydney: checkbox code? -->
-				<!-- <td style="padding-top:20px" th:if="${list.isChecked} == true"><a
-						th:href="@{|/ListOfLists/|}"><i
-							class="fa fa-check-square-o" aria-hidden="true"></i></a></td>
-							
-					<td style="padding-top:20px" th:if="${list.isChecked} == false"><a
-						th:href="@{|/ListOfLists/|}"><i
-							class="fa fa-square-o" aria-hidden="true"></i></a></td>
-							
-					<td style="padding-top:20px" th:if="${list.isChecked} == true">
-						<p style="text-decoration: line-through; padding-top:20px"
-							th:utext="${list.name}"></p>
-					</td> -->
-
-<!-- 					<td style="padding-top:20px" th:if="${list.isChecked} == false" th:utext="${list.name}"></td>
- -->
 					<td>
-					<input type="checkbox" name="listId" id="strikethrough" value="${list.id}" /> <label for="check" class="strikeThis"
-						th:text="${list.name}"> </label>
+					<form method="POST">
+					<input type="checkbox" name="active" onclick="getAlert();" /> 
+					<label th:text="${list.name}"> </label> 
+					</form>
 					</td>
-					<!-- 	<td th:text="${list.name}"></td> -->
-
-					<!-- <td><a href="/" th:href="@{|/ListsofLists/${id}|}">Show</a></td>
-
-					<td><button type="button" class="btn btn-info" href="/" th:href="@{|/ListsofLists/${list.id}|}">Show</button></td>-->
+					<td><button type="button" class="btn btn-info" th:href="@{|/ListsofLists/${list.id}|}">Show</button></td>
 
 					<!-- Delete button -->
 					<td><a href="/" th:href="@{|/ListsofLists/${list.id}|}"><button type="button" class="btn btn-info">Show</button></a></td>
@@ -126,11 +90,9 @@ input[type=text] {
 						</form></td>
 				</tr>
 			</tbody>
-
 		</table>
-		<!-- <form method="post">
-		<input type="hidden" name="listId" th:value="${list.id}"/><button type="submit">Delete Checked Lists</button></form>-->
-			
+
+		
 	</div>
 
 </body>
