@@ -4,18 +4,50 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">Shopping List</title>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-<link rel="stylesheet" th:href="@{/templates.css/main.css}" />	
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-	<style>
-		.tempfix {
+	<link rel="stylesheet" th:href="@{/templates.css/main.css}" />	
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+	<link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet" type="text/css" />	
+
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet" />
+	
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+
+
+<style>
+
+	.tempfix {
 			margin-top: 50px;
 		}
 		
-		input[type=checkbox]:checked + label.strikethrough{
-  			text-decoration: line-through;
-		}
+	.navbar-brand {
+		font-family: 'Crimson Text';	
+		font-size: 24px;
+			}
+			
+	.hover{
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 16px;
+	}
+	
+	.header {
+		font-family: 'Crimson Text';	
+		font-size: 45px;
+			}
+			
+	.btn{
+		font-family: 'Source Sans Pro', sans-serif;
+		font-size: 14px;
+	}		
+	
+	.tableHead{
+		font-family: 'Crimson Text';	
+		font-size: 25px;
+	}
+			
 	</style>
 </head>
+
 <body>
 	<div class="container tempfix">
 		<div th:replace="snippets/header :: header"></div>
