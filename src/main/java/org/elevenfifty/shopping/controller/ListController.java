@@ -82,6 +82,8 @@ public class ListController {
 		return "list_of_lists";
 	}
 
+	
+	
 	@GetMapping("/ListsofLists/{id}/check/{itemid}")
 	public String listItemCheck(Model model, @PathVariable(name = "itemid") int itemid, @PathVariable(name = "id") int id) {
 		// User currentUser = ListController.getCurrentUser();
