@@ -25,7 +25,7 @@ public class ListItemController {
 	@GetMapping("/ListsofLists/{id}")
 	public String listitems(Model model, @PathVariable(name = "id") int id) {
 		model.addAttribute("id", id);
-		model.addAttribute("list_items", listItemRepo.findAll());
+		model.addAttribute("listItems", listItemRepo.findAll());
 		//Anthony: yes I am going with listing the lists, I thought it would be funny. Edit: I am horrible at naming conventions
 		return "list_list";
 	}

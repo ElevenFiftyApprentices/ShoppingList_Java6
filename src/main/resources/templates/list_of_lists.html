@@ -38,21 +38,6 @@ input[type=text] {
 }
 
 </style>
-<script type="text/javascript">
-         
-            function getAlert(){
-               var retVal = alert("Do you want to check the box?");
-               if( retVal == true ){
-                  document.write ("You checked the box!");
-                  return true;
-               }
-               else{
-                  document.write ("You do not want to check the box!");
-                  return false;
-               }
-            }
-         
-      </script>
 
 </head>
 <body layout:fragment="content">
@@ -74,12 +59,31 @@ input[type=text] {
 			</thead>
 			<tbody>
 				<tr th:each="list : ${lists}">
-					<td>
-					<form method="POST">
-					<input type="checkbox" name="active" onclick="getAlert();" /> 
-					<label th:text="${list.name}"> </label> 
-					</form>
-					</td>
+					<!-- <td> -->
+					<!-- <form method="POST">
+					
+					<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+					<input type="checkbox" name="active" id="check1"/> 
+					<label th:text="${list.name}"> </label>
+					 
+					</form> -->
+					<!-- </td> -->
+					
+					<td style="padding-top: 20px" th:if="${list.isChecked} == true"><a
+                        th:href="@{|/ListsofLists/${list.id}/uncheck/|}"><i
+                            class="fa fa-check-square-o" aria-hidden="true"></i></a></td>
+                            
+                    <td style="padding-top: 20px" th:if="${list.isChecked} == false"><a
+                        th:href="@{|/ListsofLists/${list.id}/check/|}"><i
+                            class="fa fa-square-o" aria-hidden="true"></i></a></td>
+                            
+                    <td style="padding-top: 20px" th:if="${list.isChecked} == true">
+                        <p style="text-decoration: line-through;"
+                            th:utext="${list.name}"></p>
+                    </td>
+                    <td style="padding-top: 20px" th:if="${list.isChecked} == false"
+                        th:utext="${list.name}"></td>
+					
 					<td><button type="button" class="btn btn-info" th:href="@{|/ListsofLists/${list.id}|}">Show</button></td>
 
 					<!-- Delete button -->
@@ -94,6 +98,9 @@ input[type=text] {
 
 		
 	</div>
+	
+
+   
 
 </body>
 </html>

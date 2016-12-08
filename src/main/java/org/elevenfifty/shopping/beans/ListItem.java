@@ -19,7 +19,7 @@ public class ListItem {
 	private int id;
 	private int listId;
 	private String contents;
-	private boolean isChecked;
+	public boolean isChecked;
 	//Anthony: created custom class to create a DateTimeOffset since it is a SQL only type of variable Edit: Went with simple Date type
 	private Date createdUtc;
 	private Date modifiedUtc;
