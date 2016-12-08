@@ -22,7 +22,6 @@ public class List {
 	@JoinColumn(name="id")
 	private int id;
 
-//	private Lists<String> listOfLists;
 	
 	@JoinColumn(name="user_id")
 	private int userId;
@@ -33,7 +32,7 @@ public class List {
 	@JoinColumn(name="color")
 	private String color;
 	
-	@JoinColumn(name="is_checked")
+
 	public boolean isChecked;
 
 	
