@@ -52,8 +52,8 @@ input[type=text] {
 		<table class="table table-striped">
 			<thead>
 				<tr>
+					<th>Complete</th>
 					<th>Name</th>
-					<th>&nbsp;</th>
 					<th>&nbsp;</th>
 				</tr>
 			</thead>
@@ -84,10 +84,8 @@ input[type=text] {
                     <td style="padding-top: 20px" th:if="${list.isChecked} == false"
                         th:utext="${list.name}"></td>
 					
-					<td><button type="button" class="btn btn-info" th:href="@{|/ListsofLists/${list.id}|}">Show</button></td>
-
 					<!-- Delete button -->
-					<td><a href="/" th:href="@{|/ListsofLists/${list.id}|}"><button type="button" class="btn btn-info">Show</button></a></td>
+					<td><a href="/" th:href="@{|/ListsofLists/${list.id}|}"><button type="button" class="btn btn-info">View List</button></a></td>
 					<td><form method="POST">
 							<input type="hidden" name="listId" th:value="${list.id}" />
 							<button type="submit">Delete</button>
