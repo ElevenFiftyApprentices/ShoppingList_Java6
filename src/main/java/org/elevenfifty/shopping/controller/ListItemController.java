@@ -21,16 +21,16 @@ public class ListItemController {
 	@Autowired
 	private ListItemRepository listItemRepo;
 
-	// controller for displaying list items
+	//Anthony: controller for displaying list items
 	@GetMapping("/ListsofLists/{id}")
 	public String listitems(Model model, @PathVariable(name = "id") int id) {
 		model.addAttribute("id", id);
-		model.addAttribute("list_items", listItemRepo.findAll());
-		// yes I am going with listing the lists, I thought it would be funny.
+		model.addAttribute("listItems", listItemRepo.findAll());
+		//Anthony: yes I am going with listing the lists, I thought it would be funny. Edit: I am horrible at naming conventions
 		return "list_list";
 	}
 
-	// GetMapping and PostMapping for editing items in lists.
+	// Anthony: GetMapping and PostMapping for editing items in lists.
 	@GetMapping("/ListsofLists/{id}/add")
 	public String listItemAdd(Model model, ListItem listItem) {
 		 ListItem u = new ListItem();
@@ -40,13 +40,14 @@ public class ListItemController {
 
 	@PostMapping("/ListsofLists/{id}/add")
 	public String listItemSave(@ModelAttribute @Valid ListItem listItem, BindingResult result, Model model) {
+		//Anthony: Rather then allow user error, we are just having these time fields being auto created by the system
 		listItem.setCreatedUtc(new Date(System.currentTimeMillis()));
 		listItem.setModifiedUtc(new Date(System.currentTimeMillis()));
 		listItemRepo.save(listItem);
 		return "redirect:/ListsofLists/{id}";
 	}
 
-	// PostMapping for deleting items in a list
+	// Anthony: PostMapping for deleting items in a list
 	@PostMapping("/ListsofLists/{id}")
 	public String listItemDelete(Model model, @RequestParam(name = "id") int id) {
 		listItemRepo.delete(listItemRepo.findOne(id));

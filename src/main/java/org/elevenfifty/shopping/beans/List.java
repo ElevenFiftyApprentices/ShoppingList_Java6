@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 
@@ -15,13 +16,42 @@ import javax.persistence.Table;
 @Table(name = "lists")
 public class List {
 	//adding in variables per the TDD
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JoinColumn(name="id")
 	private int id;
 
+	
+	@JoinColumn(name="user_id")
 	private int userId;
+
+	@JoinColumn(name="name")
 	private String name;
+	
+	@JoinColumn(name="color")
 	private String color;
+	
+
+	public boolean isChecked;
+
+	
+	public boolean isChecked() {
+		return isChecked;
+	}
+
+	public void setIsChecked(Boolean isChecked) {
+		this.isChecked = isChecked;
+	}
+	
+//	public Lists<String> getListOfLists(){
+//		return listOfLists;
+//	}
+//	
+//	public void setListOfLists(Lists<String> listOfLists){
+//		this.listOfLists = listOfLists;
+//	}
+
 	//use Java.util.Date for this to mesh with SQL timestamp
 	private Date createdUtc;
 	private Date modifiedUtc;
@@ -76,8 +106,6 @@ public class List {
 	}
 
 
-	
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -127,5 +155,5 @@ public class List {
 		return true;
 	}
 
-}
 
+}
