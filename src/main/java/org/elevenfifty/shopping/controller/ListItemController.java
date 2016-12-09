@@ -54,4 +54,38 @@ public class ListItemController {
 		listItemRepo.delete(listItemRepo.findOne(id));
 		return "redirect:/ListsofLists/{id}";
 	}
+	@GetMapping("/ListsofLists/{id}/uncheck/{itemid}")
+	public String listItemUncheck(Model model, @PathVariable(name = "itemid") int itemid, @PathVariable(name = "id") int id) {
+		// User currentUser = ListController.getCurrentUser();
+		// if(!currentUser.equals(shoppingListRepo.findOne(id).getUser())){
+		// return "redirect:/lists";
+		// } else {
+		ListItem i = listItemRepo.findOne(itemid);
+		i.setChecked(false);
+		listItemRepo.save(i);
+		model.addAttribute("listItems", listItemRepo.findAll());
+		return "list_list";
+	}
+	@GetMapping("/ListsofLists/{id}/check/{itemid}")
+	public String listItemCheck(Model model, @PathVariable(name = "itemid") int itemid, @PathVariable(name = "id") int id) {
+		// User currentUser = ListController.getCurrentUser();
+		// if(!currentUser.equals(shoppingListRepo.findOne(id).getUser())){
+		// return "redirect:/lists";
+		// } else {
+		ListItem i = listItemRepo.findOne(itemid);
+		i.setChecked(true);
+		listItemRepo.save(i);
+		model.addAttribute("listItems", listItemRepo.findAll());
+		return "list_list";
+	}
+	@PostMapping("/ListsofLists/{id}/uncheck/{itemid}")
+	public String listItemUncheckDelete(Model model, @RequestParam(name = "listId") int listId) {
+		listItemRepo.delete(listItemRepo.findOne(listId));
+		return "redirect:/ListsofLists/{id}";
+	}
+	@PostMapping("/ListsofLists/{id}/check/{itemid}")
+	public String listItemCheckDelete(Model model, @RequestParam(name = "listId") int listId) {
+		listItemRepo.delete(listItemRepo.findOne(listId));
+		return "redirect:/ListsofLists/{id}";
+	}
 }
