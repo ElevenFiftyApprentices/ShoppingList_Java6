@@ -82,6 +82,23 @@ public class ListController {
 		return "list_of_lists";
 	}
 
+<<<<<<< HEAD
+=======
+	
+	
+	@GetMapping("/ListsofLists/{id}/check/{itemid}")
+	public String listItemCheck(Model model, @PathVariable(name = "itemid") int itemid, @PathVariable(name = "id") int id) {
+		// User currentUser = ListController.getCurrentUser();
+		// if(!currentUser.equals(shoppingListRepo.findOne(id).getUser())){
+		// return "redirect:/lists";
+		// } else {
+		ListItem i = listItemRepo.findOne(itemid);
+		i.setChecked(true);
+		listItemRepo.save(i);
+		model.addAttribute("listItems", listItemRepo.findAll());
+		return "list_list";
+	}
+>>>>>>> cc9226965119642c34f1b48c24404a7d1bfa2b51
 
 @GetMapping("/ListsofLists/{id}/uncheck/")
 public String listUncheck(Model model, @PathVariable(name = "id") int id) {
