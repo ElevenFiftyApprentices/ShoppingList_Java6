@@ -17,7 +17,7 @@
 	<div id="checkbox-container">
 		<h1 class="header">Shopping Lists</h1>
 		<!-- a simple button for later to add shopping lists -->
-		<a href="/" th:href="@{|/ListsofLists/add|}"><button type="button" class="btn btn-success">Add List</button></a>
+		<a href="/" th:href="@{|/ListsofLists/add|}"><button type="button" class="btn btn-success" id="add">Add List</button></a>
 		
 		<!-- <a href="/" th:href="@{|/ListsofLists/|}"><button type="button" class="btn btn-success">Done</button></a> -->
 		
@@ -48,10 +48,10 @@
                         th:utext="${list.name}"></td>
 					
 					<!-- Delete button -->
-					<td><a href="/" th:href="@{|/ListsofLists/${list.id}|}"><button type="button" class="btn btn-info">View List</button></a></td>
+					<td><a href="/" th:href="@{|/ListsofLists/${list.id}|}"><button type="button" class="btn btn-info" id="info">View List</button></a></td>
 					<td><form method="POST">
 							<input type="hidden" name="listId" th:value="${list.id}" />
-							<button type="submit">Delete</button>
+							<button type="submit" class="btn btn-danger" id="delete">Delete</button>
 						</form></td>
 				</tr>
 			</tbody>

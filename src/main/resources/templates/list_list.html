@@ -18,7 +18,7 @@
 			<h1 class="header">List Items</h1>
 <!--button to add items check with controller listItemAdd  by: Anthony Holt-->
 		<a href="/" th:href="@{|/ListsofLists/${id}/add|}"><button
-					type="button" class="btn btn-success">Add item</button></a>
+					type="button" class="btn btn-success" id="add">Add item</button></a>
 			<table class="table table-striped" id="checkbox-container">
 				<thead>
 					<tr>
@@ -47,7 +47,7 @@
 						<td>
 							<form method = "POST" th:action="@{|/ListsofLists/${id}/delete/${listItem.id}|}" th:object="${listItem}">
 							<input type="hidden" name="itemId" th:value="${itemId}" />
-							<button type="submit">Delete</button>
+							<button type="submit" class="btn btn-danger" id="delete">Delete</button>
 						</form>
 						</td>
 					</tr>
