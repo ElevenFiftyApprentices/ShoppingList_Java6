@@ -6,45 +6,17 @@
 <head>
 <title>Shopping Lists</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
 <style>
-{
-	border: 1px solid black;
-	border-collapse: collapse;
-	padding: 15px;
-}
 
-.strikethrough:checked+.strikeThis {
-	text-decoration: line-through
-} 
-
-#list{
-  margin: 10px 5px;
-}
-
-#list div{
-  margin-bottom: 5px;
-}
-
-#list button{
-  margin-top: 5px;
-}
-
-input[type=text] {
-  padding: .5em .6em;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-shadow: inset 0 1px 3px #ddd;
-  border-radius: 4px;
-}
 
 </style>
 
 </head>
 <body layout:fragment="content">
 	<div id="checkbox-container">
-		<h1>Shopping Lists</h1>
+		<h1 class="header">Shopping Lists</h1>
 		<!-- a simple button for later to add shopping lists -->
-		<!-- <button type="button" class="btn btn-danger" /><a href="/" th:href="@{|/ListsofLists/add|}"></a></button> -->
 		<a href="/" th:href="@{|/ListsofLists/add|}"><button type="button" class="btn btn-success">Add List</button></a>
 		
 		<a href="/" th:href="@{|/ListsofLists/|}"><button type="button" class="btn btn-success">Done</button></a>
@@ -52,8 +24,8 @@ input[type=text] {
 		<table class="table table-striped">
 			<thead>
 				<tr>
+					<th>Complete</th>
 					<th>Name</th>
-					<th>&nbsp;</th>
 					<th>&nbsp;</th>
 				</tr>
 			</thead>
@@ -84,10 +56,8 @@ input[type=text] {
                     <td style="padding-top: 20px" th:if="${list.isChecked} == false"
                         th:utext="${list.name}"></td>
 					
-					<td><button type="button" class="btn btn-info" th:href="@{|/ListsofLists/${list.id}|}">Show</button></td>
-
 					<!-- Delete button -->
-					<td><a href="/" th:href="@{|/ListsofLists/${list.id}|}"><button type="button" class="btn btn-info">Show</button></a></td>
+					<td><a href="/" th:href="@{|/ListsofLists/${list.id}|}"><button type="button" class="btn btn-info">View List</button></a></td>
 					<td><form method="POST">
 							<input type="hidden" name="listId" th:value="${list.id}" />
 							<button type="submit">Delete</button>

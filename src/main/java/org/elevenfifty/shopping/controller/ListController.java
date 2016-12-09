@@ -82,6 +82,10 @@ public class ListController {
 		return "list_of_lists";
 	}
 
+<<<<<<< HEAD
+=======
+	
+	
 	@GetMapping("/ListsofLists/{id}/check/{itemid}")
 	public String listItemCheck(Model model, @PathVariable(name = "itemid") int itemid, @PathVariable(name = "id") int id) {
 		// User currentUser = ListController.getCurrentUser();
@@ -94,6 +98,7 @@ public class ListController {
 		model.addAttribute("listItems", listItemRepo.findAll());
 		return "list_list";
 	}
+>>>>>>> cc9226965119642c34f1b48c24404a7d1bfa2b51
 
 @GetMapping("/ListsofLists/{id}/uncheck/")
 public String listUncheck(Model model, @PathVariable(name = "id") int id) {
@@ -104,16 +109,15 @@ public String listUncheck(Model model, @PathVariable(name = "id") int id) {
     return "list_of_lists";
     }
 
-@GetMapping("/ListsofLists/{id}/uncheck/{itemid}")
-public String listItemUncheck(Model model, @PathVariable(name = "itemid") int itemid, @PathVariable(name = "id") int id) {
-	// User currentUser = ListController.getCurrentUser();
-	// if(!currentUser.equals(shoppingListRepo.findOne(id).getUser())){
-	// return "redirect:/lists";
-	// } else {
-	ListItem i = listItemRepo.findOne(itemid);
-	i.setChecked(false);
-	listItemRepo.save(i);
-	model.addAttribute("listItems", listItemRepo.findAll());
-	return "list_list";
+
+@PostMapping("/ListsofLists/{id}/check/")
+public String listCheckDelete(Model model, @RequestParam(name = "listId") int listId) {
+	listRepo.delete(listRepo.findOne(listId));
+	return "redirect:/ListsofLists";
+}
+@PostMapping("/ListsofLists/{id}/uncheck/")
+public String listUncheckDelete(Model model, @RequestParam(name = "listId") int listId) {
+	listRepo.delete(listRepo.findOne(listId));
+	return "redirect:/ListsofLists";
 }
 }
