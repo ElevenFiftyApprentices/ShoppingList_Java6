@@ -19,7 +19,7 @@
 		<!-- a simple button for later to add shopping lists -->
 		<a href="/" th:href="@{|/ListsofLists/add|}"><button type="button" class="btn btn-success">Add List</button></a>
 		
-		<a href="/" th:href="@{|/ListsofLists/|}"><button type="button" class="btn btn-success">Done</button></a>
+		<!-- <a href="/" th:href="@{|/ListsofLists/|}"><button type="button" class="btn btn-success">Done</button></a> -->
 		
 		<table class="table table-striped">
 			<thead>
@@ -31,15 +31,6 @@
 			</thead>
 			<tbody>
 				<tr th:each="list : ${lists}">
-					<!-- <td> -->
-					<!-- <form method="POST">
-					
-					<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-					<input type="checkbox" name="active" id="check1"/> 
-					<label th:text="${list.name}"> </label>
-					 
-					</form> -->
-					<!-- </td> -->
 					
 					<td style="padding-top: 20px" th:if="${list.isChecked} == true"><a
                         th:href="@{|/ListsofLists/${list.id}/uncheck/|}"><i
