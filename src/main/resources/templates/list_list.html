@@ -5,10 +5,10 @@
 	layout:decorator="layouts/basic">
 <link rel="stylesheet" th:href="@{/templates.css/main.css}" />
 <head>
-<title>Getting Started: Serving Web Content</title>
-<title>Shopping Lists</title>
+<title>List Items</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <style>
+
 </style>
 
 </head>
@@ -16,9 +16,9 @@
 	<div class="row">
 		<div id="checkbox-container">
 			<h1 class="header">List Items</h1>
-			<!--button to add items check with controller listItemAdd  by: Anthony Holt-->
-			<a href="/" th:href="@{|/ListsofLists/${id}/add|}"><button
-					type="button" class="btn btn-success">Add item</button></a>
+<!--button to add items check with controller listItemAdd  by: Anthony Holt-->
+		<a href="/" th:href="@{|/ListsofLists/${id}/add|}"><button
+					type="button" class="btn btn-success" id="add">Add item</button></a>
 			<table class="table table-striped" id="checkbox-container">
 				<thead>
 					<tr>
@@ -29,38 +29,29 @@
 				<tbody id="checkbox-container">
 					<tr th:each="listItem : ${listItems}">
 
-						<td style="padding-top: 20px"
-							th:if="${listItem.isChecked} == true"><a
-							th:href="@{|/ListsofLists/${id}/uncheck/${listItem.id}|}"><i
-								class="fa fa-check-square-o" aria-hidden="true"></i></a></td>
+					<td style="padding-top: 20px" th:if="${listItem.isChecked} == true"><a
+                        th:href="@{|/ListsofLists/${id}/uncheck/${listItem.id}|}"><i
+                            class="fa fa-check-square-o" aria-hidden="true"></i></a></td>
+                            
+                    <td style="padding-top: 20px" th:if="${listItem.isChecked} == false"><a
+                        th:href="@{|/ListsofLists/${id}/check/${listItem.id}|}"><i
+                            class="fa fa-square-o" aria-hidden="true"></i></a></td>
+                            
+                    <td style="padding-top: 20px" th:if="${listItem.isChecked} == true">
+                        <p style="text-decoration: line-through;"
+                            th:utext="${listItem.contents}"></p>
+                    </td>
+                    <td style="padding-top: 20px" th:if="${listItem.isChecked} == false"
+                        th:utext="${listItem.contents}"></td>
 
-						<td style="padding-top: 20px"
-							th:if="${listItem.isChecked} == false"><a
-							th:href="@{|/ListsofLists/${id}/check/${listItem.id}|}"><i
-								class="fa fa-square-o" aria-hidden="true"></i></a></td>
-
-						<td style="padding-top: 20px"
-							th:if="${listItem.isChecked} == true">
-							<p style="text-decoration: line-through;"
-								th:utext="${listItem.contents}"></p>
+						<td>
+							<form method = "POST" th:action="@{|/ListsofLists/${id}/delete/${listItem.id}|}" th:object="${listItem}">
+							
+							<input type="hidden" name="itemId" th:value="${itemId}" />
+							
+							<button type="submit" class="btn btn-danger" id="delete">Delete</button>
+						</form>
 						</td>
-						<td style="padding-top: 20px"
-							th:if="${listItem.isChecked} == false"
-							th:utext="${listItem.contents}"></td>
-						<td><form method="POST">
-								<input type="hidden" name="id" th:value="${listItem.id}" />
-								<button type="submit">Delete</button>
-							</form></td>
-
-
-
-						<!-- <td><input type="checkbox" name="check" class="strikethrough"
-							value="1" /><label for="check" class="strikeThis"
-					 		th:text="${listItem.contents}" onclick="saveCheckbox()"> </label></td> -->
-						<!--	<td>
-								<input type="hidden" name="id" th:value="${listItem.id}" />
-								<button type="sub>Delete</button>
-						</td> -->
 					</tr>
 				</tbody>
 			</table>

@@ -80,7 +80,8 @@ public class ListController {
 		model.addAttribute("lists", listRepo.findAll());
 		// model.addAttribute("lists", listRepo.findOne(id).getLists());
 		return "list_of_lists";
-	}
+	}	
+
 
 @GetMapping("/ListsofLists/{id}/uncheck/")
 public String listUncheck(Model model, @PathVariable(name = "id") int id) {
