@@ -82,7 +82,10 @@ public class ListController {
 		return "list_of_lists";
 	}	
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> fa54b33bb303ca5fdb1535ec1fff4f243795a8a0
 @GetMapping("/ListsofLists/{id}/uncheck/")
 public String listUncheck(Model model, @PathVariable(name = "id") int id) {
 	List i = listRepo.findOne(id);
