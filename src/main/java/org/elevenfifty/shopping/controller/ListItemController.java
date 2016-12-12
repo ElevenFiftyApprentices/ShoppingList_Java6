@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -30,17 +31,29 @@ public class ListItemController {
 		//Anthony: yes I am going with listing the lists, I thought it would be funny. Edit: I am horrible at naming conventions
 		return "list_list";
 	}
+	
+	@PostMapping("ListsofLists/{id}/delete/{listItemId}")
+	public String listitemDelete(Model model, @PathVariable(name = "id") int id, @ModelAttribute @Valid ListItem listItem, @PathVariable(name = "listItemId") int listItemId) {
+		listItemRepo.delete(listItemRepo.findOne(listItemId));
+		model.addAttribute("id", id);
+		model.addAttribute("listItems", listItemRepo.findAll());
+		//Anthony: yes I am going with listing the lists, I thought it would be funny. Edit: I am horrible at naming conventions
+		return "list_list";
+	}
+	
 
 	// Anthony: GetMapping and PostMapping for editing items in lists.
 	@GetMapping("/ListsofLists/{id}/add")
-	public String listItemAdd(Model model, ListItem listItem) {
+	public String listItemAdd(Model model, @PathVariable(name = "id") 
+	int id, ListItem listItem) {
 		 ListItem u = new ListItem();
 		 model.addAttribute(listItem);
 		return "list_item_add";
 	}
 
 	@PostMapping("/ListsofLists/{id}/add")
-	public String listItemSave(@ModelAttribute @Valid ListItem listItem, BindingResult result, Model model) {
+	public String listItemSave(@ModelAttribute @Valid ListItem listItem, BindingResult result, Model model, @PathVariable(name = "id") 
+	int id) {
 		//Anthony: Rather then allow user error, we are just having these time fields being auto created by the system
 		listItem.setCreatedUtc(new Date(System.currentTimeMillis()));
 		listItem.setModifiedUtc(new Date(System.currentTimeMillis()));
@@ -49,17 +62,21 @@ public class ListItemController {
 	}
 
 	// Anthony: PostMapping for deleting items in a list
-	@PostMapping("/ListsofLists/{id}")
-	public String listItemDelete(Model model, @RequestParam(name = "id") int id) {
-		listItemRepo.delete(listItemRepo.findOne(id));
-		return "redirect:/ListsofLists/{id}";
+//	@PostMapping("/ListsofLists/{id}/check/{itemId}")
+//	public String listItemDelete(Model model, @RequestParam(name = "itemId") int itemId) {
+//		listItemRepo.delete(listItemRepo.findOne(itemId));
+//		return "redirect:/ListsofLists/{id}";
+//	}
+	
+	@PostMapping("/ListsofLists/{id}/")
+	public String listItemDelete(Model model, @RequestParam(name = "itemId") int itemId) {
+		listItemRepo.delete(listItemRepo.findOne(itemId));
+		return "/ListsofLists/{id}";
 	}
+	
 	@GetMapping("/ListsofLists/{id}/uncheck/{itemid}")
 	public String listItemUncheck(Model model, @PathVariable(name = "itemid") int itemid, @PathVariable(name = "id") int id) {
-		// User currentUser = ListController.getCurrentUser();
-		// if(!currentUser.equals(shoppingListRepo.findOne(id).getUser())){
-		// return "redirect:/lists";
-		// } else {
+	
 		ListItem i = listItemRepo.findOne(itemid);
 		i.setChecked(false);
 		listItemRepo.save(i);
@@ -68,10 +85,7 @@ public class ListItemController {
 	}
 	@GetMapping("/ListsofLists/{id}/check/{itemid}")
 	public String listItemCheck(Model model, @PathVariable(name = "itemid") int itemid, @PathVariable(name = "id") int id) {
-		// User currentUser = ListController.getCurrentUser();
-		// if(!currentUser.equals(shoppingListRepo.findOne(id).getUser())){
-		// return "redirect:/lists";
-		// } else {
+
 		ListItem i = listItemRepo.findOne(itemid);
 		i.setChecked(true);
 		listItemRepo.save(i);
