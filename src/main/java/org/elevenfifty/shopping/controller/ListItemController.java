@@ -44,14 +44,16 @@ public class ListItemController {
 
 	// Anthony: GetMapping and PostMapping for editing items in lists.
 	@GetMapping("/ListsofLists/{id}/add")
-	public String listItemAdd(Model model, ListItem listItem) {
+	public String listItemAdd(Model model, @PathVariable(name = "id") 
+	int id, ListItem listItem) {
 		 ListItem u = new ListItem();
 		 model.addAttribute(listItem);
 		return "list_item_add";
 	}
 
 	@PostMapping("/ListsofLists/{id}/add")
-	public String listItemSave(@ModelAttribute @Valid ListItem listItem, BindingResult result, Model model) {
+	public String listItemSave(@ModelAttribute @Valid ListItem listItem, BindingResult result, Model model, @PathVariable(name = "id") 
+	int id) {
 		//Anthony: Rather then allow user error, we are just having these time fields being auto created by the system
 		listItem.setCreatedUtc(new Date(System.currentTimeMillis()));
 		listItem.setModifiedUtc(new Date(System.currentTimeMillis()));

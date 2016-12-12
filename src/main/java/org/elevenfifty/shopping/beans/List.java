@@ -1,7 +1,7 @@
 package org.elevenfifty.shopping.beans;
 
 import java.util.Date;
-import java.util.List;
+//import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -20,19 +20,22 @@ import javax.persistence.Table;
 public class List {
 	//adding in variables per the TDD
 	
+//	@OneToMany(mappedBy="list", cascade = CascadeType.ALL)
+//		private List <ListItem> listItems;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@JoinColumn(name="id")
 	private int id;
 
 	
-	@JoinColumn(name="user_id")
+	private int listId;
+	
 	private int userId;
 
-	@JoinColumn(name="name")
 	private String name;
 	
-	@JoinColumn(name="color")
+
 	private String color;
 	
 
@@ -157,13 +160,21 @@ public class List {
 			return false;
 		return true;
 	}
-	
-	public ShoppingList<ListItem> getListItems() {
-		return listItems;
+//	
+//	public ShoppingList<ListItem> getListItems() {
+//		return listItems;
+//	}
+//
+//	public void setListItems(ShoppingList<ListItem> listItems) {
+//		this.listItems = listItems;
+//	}
+
+	public int getListId() {
+		return listId;
 	}
 
-	public void setListItems(ShoppingList<ListItem> listItems) {
-		this.listItems = listItems;
+	public void setListId(int listId) {
+		this.listId = listId;
 	}
 
 
