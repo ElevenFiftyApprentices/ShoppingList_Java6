@@ -79,13 +79,13 @@ public class ListItemController {
 		return "list_list";
 	}
 	@PostMapping("/ListsofLists/{id}/uncheck/{itemid}")
-	public String listItemUncheckDelete(Model model, @RequestParam(name = "listId") int listId) {
-		listItemRepo.delete(listItemRepo.findOne(listId));
+	public String listItemUncheckDelete(Model model, @RequestParam(name = "id") int id) {
+		listItemRepo.delete(listItemRepo.findOne(id));
 		return "redirect:/ListsofLists/{id}";
 	}
 	@PostMapping("/ListsofLists/{id}/check/{itemid}")
-	public String listItemCheckDelete(Model model, @RequestParam(name = "listId") int listId) {
-		listItemRepo.delete(listItemRepo.findOne(listId));
+	public String listItemCheckDelete(Model model, @RequestParam(name = "id") int id) {
+		listItemRepo.delete(listItemRepo.findOne(id));
 		return "redirect:/ListsofLists/{id}";
 	}
 }
